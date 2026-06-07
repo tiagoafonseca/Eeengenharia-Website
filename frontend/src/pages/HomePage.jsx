@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { GrStatusGood } from "react-icons/gr";
+import { GrStatusGood, GrUserWorker } from "react-icons/gr";
 import { LuCalendarCheck } from "react-icons/lu";
-import { GrUserWorker } from "react-icons/gr";
 import { useTranslation } from "react-i18next";
 import Modal from "../components/sections/Modal.jsx";
 import Carousel from "../components/sections/Carousel.jsx";
 import { HOME_SERVICES } from "../data/services.js";
+
+const HIGHLIGHTS = [
+    { icon: GrUserWorker, titleKey: "experience", descKey: "experienceDesc" },
+    { icon: GrStatusGood, titleKey: "quality", descKey: "qualityDesc" },
+    { icon: LuCalendarCheck, titleKey: "commitment", descKey: "commitmentDesc" },
+];
 
 const HomePage = () => {
     const [showModal, setShowModal] = useState(false);
@@ -16,15 +21,15 @@ const HomePage = () => {
         <main>
             <Carousel />
 
-            <div className="flex flex-row items-center justify-center px-25 py-20">
-                <div className="p-10 m-15">
-                    <h1 className="font-bold text-[30px] pb-5">{t("whoWeAre")}</h1>
-                    <p className="text-[25px]">{t("whoWeAreDesc")}</p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 px-6 md:px-25 py-12 md:py-20">
+                <div className="w-full md:w-1/2 max-w-xl">
+                    <h1 className="font-bold text-2xl md:text-3xl pb-5">{t("whoWeAre")}</h1>
+                    <p className="text-lg md:text-2xl">{t("whoWeAreDesc")}</p>
 
-                    <div className="group inline-block relative cursor-pointer mt-15">
+                    <div className="group inline-block relative cursor-pointer mt-10 md:mt-15">
                         <Link
                             to="/sobrenos"
-                            className="font-semibold text-black text-[25px] transition-colors duration-300 group-hover:text-black"
+                            className="font-semibold text-black text-xl md:text-2xl transition-colors duration-300 group-hover:text-black"
                         >
                             {t("learnMore")}
                         </Link>
@@ -32,75 +37,48 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                <div>
-                    <img src="/quem-somos.webp" alt={t("whoWeAre")} width="600" height="450" loading="lazy" />
+                <div className="w-full md:w-1/2 flex justify-center">
+                    <img src="/quem-somos.webp" alt={t("whoWeAre")} width="600" height="450" loading="lazy" className="w-full max-w-[600px] h-auto" />
                 </div>
             </div>
 
-            <div className="relative w-full h-[500px] bg-black flex items-center justify-center">
-                <div className="grid grid-cols-3 gap-x-[200px] text-white w-full max-w-6xl mx-auto">
-                    <div className="flex justify-center pb-4">
-                        <Link
-                            className="flex items-center justify-center h-[120px] w-[120px] rounded-full ring-0 ring-white hover:text-black hover:bg-white hover:ring-3 hover:ring-offset-2 hover:ring-offset-black transition-all duration-300 ease-linear"
-                            to="/portfolio"
-                            aria-label={t("experience")}
-                        >
-                            <GrUserWorker className="text-[80px]" />
-                        </Link>
-                    </div>
-                    <div className="flex justify-center pb-4">
-                        <Link
-                            className="flex items-center justify-center h-[120px] w-[120px] rounded-full ring-0 ring-white hover:text-black hover:bg-white hover:ring-3 hover:ring-offset-2 hover:ring-offset-black transition-all duration-300 ease-linear"
-                            to="/portfolio"
-                            aria-label={t("quality")}
-                        >
-                            <GrStatusGood className="text-[80px]" />
-                        </Link>
-                    </div>
-                    <div className="flex justify-center pb-4">
-                        <Link
-                            className="flex items-center justify-center h-[120px] w-[120px] rounded-full ring-0 ring-white hover:text-black hover:bg-white hover:ring-3 hover:ring-offset-2 hover:ring-offset-black transition-all duration-300 ease-linear"
-                            to="/portfolio"
-                            aria-label={t("commitment")}
-                        >
-                            <LuCalendarCheck className="text-[80px]" />
-                        </Link>
-                    </div>
-
-                    <div className="text-center font-bold text-[30px] pt-2">{t("experience")}</div>
-                    <div className="text-center font-bold text-[30px] pt-2">{t("quality")}</div>
-                    <div className="text-center font-bold text-[30px] pt-2">{t("commitment")}</div>
-
-                    <p className="text-center text-[20px] pt-5">{t("experienceDesc")}</p>
-                    <p className="text-center text-[20px] pt-5">{t("qualityDesc")}</p>
-                    <p className="text-center text-[20px] pt-5">{t("commitmentDesc")}</p>
+            <div className="w-full bg-black py-16 md:py-20">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 lg:gap-x-[200px] text-white w-full max-w-6xl mx-auto px-6">
+                    {HIGHLIGHTS.map(({ icon, titleKey, descKey }) => {
+                        const Icon = icon;
+                        return (
+                            <div key={titleKey} className="flex flex-col items-center">
+                                <Link
+                                    className="flex items-center justify-center h-[120px] w-[120px] rounded-full ring-0 ring-white hover:text-black hover:bg-white hover:ring-3 hover:ring-offset-2 hover:ring-offset-black transition-all duration-300 ease-linear"
+                                    to="/portfolio"
+                                    aria-label={t(titleKey)}
+                                >
+                                    <Icon className="text-[80px]" />
+                                </Link>
+                                <h2 className="text-center font-bold text-2xl md:text-3xl pt-5">{t(titleKey)}</h2>
+                                <p className="text-center text-lg md:text-xl pt-4">{t(descKey)}</p>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
 
-            <div className="flex items-center justify-center">
-                <div className="mt-25 mb-25 flex flex-col items-center justify-center">
-                    <div className="grid grid-cols-3 gap-x-[200px] text-black w-full mx-auto mb-4">
+            <div className="flex items-center justify-center px-6">
+                <div className="mt-16 mb-16 md:mt-25 md:mb-25 flex flex-col items-center justify-center w-full">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 lg:gap-x-[200px] text-black w-full max-w-6xl mx-auto mb-4">
                         {HOME_SERVICES.map(({ image, titleKey, descKey }) => (
-                            <div key={titleKey} className="flex justify-center">
-                                <img src={image} alt={t(titleKey)} width="300" height="250" loading="lazy" />
+                            <div key={titleKey} className="flex flex-col items-center">
+                                <img src={image} alt={t(titleKey)} width="300" height="250" loading="lazy" className="w-full max-w-[300px] h-auto" />
+                                <h2 className="text-center font-bold text-2xl md:text-3xl pt-5">{t(titleKey)}</h2>
+                                <p className="text-center text-lg md:text-xl pt-4">{t(descKey)}</p>
                             </div>
-                        ))}
-                        {HOME_SERVICES.map(({ titleKey }) => (
-                            <div key={titleKey + "-title"} className="text-center font-bold text-[30px] pt-5">
-                                {t(titleKey)}
-                            </div>
-                        ))}
-                        {HOME_SERVICES.map(({ descKey }) => (
-                            <p key={descKey} className="text-center text-[20px] pt-5">
-                                {t(descKey)}
-                            </p>
                         ))}
                     </div>
 
                     <div className="flex items-center justify-center">
                         <button
                             onClick={() => setShowModal(true)}
-                            className="bg-black mt-10 px-3 py-4 text-white text-[20px] hover:bg-gray-400 transition-all duration-300 ease-linear"
+                            className="bg-black mt-10 px-6 py-4 text-white text-lg md:text-xl hover:bg-gray-400 transition-all duration-300 ease-linear"
                         >
                             {t("requestBudget")}
                         </button>

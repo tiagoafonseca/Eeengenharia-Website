@@ -8,11 +8,11 @@ const Services = () => {
     const [active, setActive] = useState(SERVICE_SECTIONS[0].id);
 
     const BudgetDivider = () => (
-        <div className="flex items-center justify-center my-15 w-[85%]">
+        <div className="flex items-center justify-center my-10 md:my-15 w-[90%] md:w-[85%]">
             <div className="flex-1 h-[2px] border-t-2 border-black" />
             <Link
                 to="/contactos"
-                className="mx-4 text-xl font-bold transition-transform duration-200 hover:scale-105 origin-center"
+                className="mx-4 text-base md:text-xl font-bold text-center transition-transform duration-200 hover:scale-105 origin-center"
             >
                 {t("requestBudget").toUpperCase()}
             </Link>
@@ -22,10 +22,10 @@ const Services = () => {
 
     return (
         <main>
-            <div className="flex flex-col justify-center items-center mt-30 mb-10 p-10">
-                <h1 className="font-bold text-[40px] mb-10">{t("servicesTitle")}</h1>
+            <div className="flex flex-col justify-center items-center mt-24 md:mt-30 mb-10 px-6 md:p-10">
+                <h1 className="font-bold text-3xl md:text-[40px] mb-10 text-center">{t("servicesTitle")}</h1>
 
-                <div className="flex flex-row justify-center items-center gap-x-15 text-[25px] mb-10">
+                <div className="flex flex-row flex-wrap justify-center items-center gap-4 md:gap-x-15 text-lg md:text-[25px] mb-10">
                     {SERVICE_SECTIONS.map(({ id, labelKey }) => (
                         <div key={id} className="group inline-block relative">
                             <a href={`#${id}`} onClick={() => setActive(id)}>{t(labelKey)}</a>
@@ -41,17 +41,17 @@ const Services = () => {
                 {SERVICE_SECTIONS.map(({ id, titleKey }) => (
                     <div key={id} className="w-full flex flex-col items-center">
                         <BudgetDivider />
-                        <section className="w-[85%]" id={id}>
-                            <div className="flex flex-row justify-center items-center gap-x-15 mt-15 mb-10">
-                                <div className="flex flex-col justify-start gap-y-5 w-[60%]">
-                                    <h2 className="font-bold text-[25px]">{t(titleKey)}</h2>
-                                    <p className="text-[20px]">{t("serviceDesc")}</p>
+                        <section className="w-[90%] md:w-[85%] scroll-mt-28" id={id}>
+                            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-x-15 mt-10 md:mt-15 mb-10">
+                                <div className="flex flex-col justify-start gap-y-5 w-full md:w-[60%]">
+                                    <h2 className="font-bold text-2xl md:text-[25px]">{t(titleKey)}</h2>
+                                    <p className="text-lg md:text-[20px]">{t("serviceDesc")}</p>
                                 </div>
-                                <div className="flex flex-col justify-center items-center gap-y-8">
-                                    <img src="/orcamento-img2.webp" alt={t(titleKey)} width="400" height="300" loading="lazy" />
+                                <div className="flex flex-col justify-center items-center gap-y-8 w-full md:w-auto">
+                                    <img src="/orcamento-img2.webp" alt={t(titleKey)} width="400" height="300" loading="lazy" className="w-full max-w-[400px] h-auto" />
                                     <Link
                                         to="/portfolio"
-                                        className="bg-white border-2 border-black text-black text-center p-2 w-[50%] hover:bg-black hover:text-white transition-all duration-300 ease-linear"
+                                        className="bg-white border-2 border-black text-black text-center p-2 w-[70%] md:w-[50%] hover:bg-black hover:text-white transition-all duration-300 ease-linear"
                                     >
                                         {t("viewProjects")}
                                     </Link>

@@ -18,7 +18,7 @@ export default function Carousel() {
         setCurrentIndex((i) => (i === SLIDES.length - 1 ? 0 : i + 1));
 
     return (
-        <div className="h-[780px] w-full pt-25 relative group">
+        <div className="h-[55vh] min-h-[320px] md:h-[600px] lg:h-[780px] w-full pt-0 md:pt-25 relative group">
             <div
                 style={{ backgroundImage: `url(${SLIDES[currentIndex].url})` }}
                 className="w-full h-full bg-center bg-cover duration-500"
@@ -29,7 +29,7 @@ export default function Carousel() {
             <button
                 onClick={prevSlide}
                 aria-label="Slide anterior"
-                className="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-15 items-center justify-center rounded-full p-2 bg-black/20 text-white hover:bg-black/40 transition-colors"
+                className="flex md:hidden md:group-hover:flex absolute top-1/2 -translate-y-1/2 left-3 md:left-15 items-center justify-center rounded-full p-2 bg-black/20 text-white hover:bg-black/40 transition-colors"
             >
                 <BsChevronCompactLeft size={30} />
             </button>
@@ -37,7 +37,7 @@ export default function Carousel() {
             <button
                 onClick={nextSlide}
                 aria-label="Próximo slide"
-                className="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 right-15 items-center justify-center rounded-full p-2 bg-black/20 text-white hover:bg-black/40 transition-colors"
+                className="flex md:hidden md:group-hover:flex absolute top-1/2 -translate-y-1/2 right-3 md:right-15 items-center justify-center rounded-full p-2 bg-black/20 text-white hover:bg-black/40 transition-colors"
             >
                 <BsChevronCompactRight size={30} />
             </button>

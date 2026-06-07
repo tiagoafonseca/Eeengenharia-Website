@@ -7,8 +7,8 @@ const Footer = () => {
     const { t } = useTranslation();
 
     return (
-        <footer className="bg-black p-10">
-            <div className="grid grid-cols-4 gap-x-[100px] text-white w-auto mx-auto p-10">
+        <footer className="bg-black p-6 md:p-10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-x-[100px] text-white w-auto mx-auto p-4 md:p-10">
                 <div>
                     <img src="/logo-footer.webp" alt="Eeengenharia" width="160" height="50" loading="lazy" />
                     <div className="pt-10 flex flex-col gap-y-[20px]">
@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <h2 className="text-[25px]">{t("portfolio")}</h2>
+                    <h2 className="text-xl md:text-[25px]">{t("portfolio")}</h2>
                     <div className="pt-5 flex flex-col gap-y-[20px]">
                         <Link className="inline-block text-base transition-transform duration-200 hover:scale-105 origin-left" to="/portfolio">{t("works")}</Link>
                         <Link className="inline-block text-base transition-transform duration-200 hover:scale-105 origin-left" to="/contactos">{t("budgets")}</Link>
@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <h2 className="text-[25px]">{t("services")}</h2>
+                    <h2 className="text-xl md:text-[25px]">{t("services")}</h2>
                     <div className="pt-5 flex flex-col gap-y-[20px]">
                         <Link className="inline-block text-base transition-transform duration-200 hover:scale-105 origin-left" to="/servicos#moradias">{t("construction")}</Link>
                         <Link className="inline-block text-base transition-transform duration-200 hover:scale-105 origin-left" to="/servicos#remodelacoes">{t("renovations")}</Link>
@@ -42,7 +42,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <h2 className="text-[25px]">{t("contacts")}</h2>
+                    <h2 className="text-xl md:text-[25px]">{t("contacts")}</h2>
                     <div className="pt-5 flex flex-col gap-y-[20px]">
                         <div className="flex flex-row gap-x-[10px]">
                             <IoMailOutline className="text-[20px]" />

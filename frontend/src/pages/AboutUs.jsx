@@ -14,10 +14,10 @@ const AboutUs = () => {
     return (
         <main>
             <div className="text-black">
-                <div className="flex flex-col justify-center items-center text-black pb-20 mt-30 mb-10 p-10">
-                    <h1 className="font-bold text-[40px]">{t("ourHistory")}</h1>
-                    <div className="flex flex-row justify-evenly gap-x-20 pt-20">
-                        <div className="text-[20px] font-normal pt-10">
+                <div className="flex flex-col justify-center items-center text-black pb-12 md:pb-20 mt-24 md:mt-30 mb-10 px-6 md:p-10">
+                    <h1 className="font-bold text-3xl md:text-[40px] text-center">{t("ourHistory")}</h1>
+                    <div className="flex flex-col lg:flex-row justify-evenly items-center gap-10 lg:gap-x-20 pt-12 md:pt-20 w-full">
+                        <div className="text-lg md:text-xl font-normal lg:pt-10 lg:w-1/2">
                             <p className="p-2">{t("historyP1")}</p>
                             <p className="p-2">{t("historyP2")}</p>
                             <p className="p-2">{t("historyP3")}</p>
@@ -28,34 +28,34 @@ const AboutUs = () => {
                             <p className="p-2">{t("historyP4")}</p>
                         </div>
 
-                        <div>
-                            <img className="h-[600px] w-[1000px]" src="/aboutUs-img1.webp" alt={t("ourHistory")} width="1000" height="600" loading="lazy" />
+                        <div className="lg:w-1/2 flex justify-center">
+                            <img className="w-full max-w-[1000px] h-auto" src="/aboutUs-img1.webp" alt={t("ourHistory")} width="1000" height="600" loading="lazy" />
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-black text-white flex flex-col justify-center items-center p-10 w-auto">
-                    <h2 className="font-bold text-[40px]">{t("ourTeam")}</h2>
+                <div className="bg-black text-white flex flex-col justify-center items-center px-6 py-12 md:p-10 w-auto">
+                    <h2 className="font-bold text-3xl md:text-[40px] text-center">{t("ourTeam")}</h2>
 
-                    <div className="flex flex-row gap-x-50 w-auto pt-20">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-x-50 w-auto pt-12 md:pt-20">
                         {TEAM.map((member, i) => (
                             <div key={i} className="flex flex-col justify-center items-center">
                                 <img className="pb-5" src={member.image} alt={member.name} width="120" height="120" loading="lazy" />
-                                <h3 className="text-[25px] font-bold">{member.name}</h3>
-                                <p>{member.role}</p>
+                                <h3 className="text-xl md:text-[25px] font-bold text-center">{member.name}</h3>
+                                <p className="text-center">{member.role}</p>
                             </div>
                         ))}
                     </div>
 
-                    <div className="m-25 px-10 text-[20px]">
+                    <div className="my-12 md:m-25 px-2 md:px-10 text-lg md:text-xl max-w-4xl">
                         <p className="pb-5">{t("teamP1")}</p>
                         <p className="pb-2">{t("teamP2")}</p>
                     </div>
                 </div>
 
-                <div className="bg-white pt-20 text-black mb-25">
+                <div className="bg-white pt-12 md:pt-20 text-black mb-16 md:mb-25">
                     <div className="flex justify-center mb-10">
-                        <h2 className="font-bold text-[40px]">{t("contactUs")}</h2>
+                        <h2 className="font-bold text-3xl md:text-[40px] text-center px-6">{t("contactUs")}</h2>
                     </div>
                     <ContactForm onSubmit={handleContactSubmit} />
                 </div>

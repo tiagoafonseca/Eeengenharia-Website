@@ -32,10 +32,10 @@ const Portfollium = () => {
 
     return (
         <main>
-            <div className="flex flex-col justify-center items-center mt-30 mb-10 p-10">
-                <h1 className="font-bold text-[40px] mb-10">{t("portfolioTitle")}</h1>
+            <div className="flex flex-col justify-center items-center mt-24 md:mt-30 mb-10 px-6 md:p-10">
+                <h1 className="font-bold text-3xl md:text-[40px] mb-10 text-center">{t("portfolioTitle")}</h1>
 
-                <div className="flex flex-row justify-center items-center gap-x-15 text-[25px] mb-10">
+                <div className="flex flex-row flex-wrap justify-center items-center gap-4 md:gap-x-15 text-lg md:text-[25px] mb-10">
                     {botoes.map((label) => (
                         <div key={label} className="group inline-block relative">
                             <button onClick={() => setActive(label)}>{label}</button>
@@ -48,19 +48,18 @@ const Portfollium = () => {
                     ))}
                 </div>
 
-                <div className="flex flex-col justify-center items-center gap-y-5">
+                <div className="flex flex-col justify-center items-center gap-5 w-full max-w-6xl">
                     {Array.from({length: ROW_COUNT}).map((_, i) => (
                         <div
                             key={i}
                             ref={(el) => { rowsRef.current[i] = el; }}
-                            className={`flex flex-row justify-center gap-x-5 transition-opacity ease-in duration-700 ${
+                            className={`portfolio-row grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full transition-opacity ease-in duration-700 ${
                                 visibleStates[i] ? "opacity-100" : "opacity-0"
                             }`}
-                            id="row"
                         >
-                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" />
-                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" />
-                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" />
+                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" className="w-full h-auto" />
+                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" className="w-full h-auto" />
+                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" className="w-full h-auto" />
                         </div>
                     ))}
                 </div>

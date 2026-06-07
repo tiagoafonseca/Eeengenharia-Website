@@ -22,10 +22,10 @@ button:hover {
     cursor: pointer;
 }
 
-#row img {
+.portfolio-row img {
     @apply transition-all duration-300 ease-in-out;
 }
 
-#row img:hover {
+.portfolio-row img:hover {
     @apply brightness-75;
 }

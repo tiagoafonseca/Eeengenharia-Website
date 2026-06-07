@@ -10,9 +10,9 @@ const Contacts = () => {
 
     return (
         <main>
-            <div className="bg-white text-black mt-30 mb-10 p-10">
+            <div className="bg-white text-black mt-24 md:mt-30 mb-10 px-6 md:p-10">
                 <div className="flex justify-center mb-10">
-                    <h1 className="font-bold text-[40px]">{t("contactsTitle")}</h1>
+                    <h1 className="font-bold text-3xl md:text-[40px] text-center">{t("contactsTitle")}</h1>
                 </div>
                 <ContactForm onSubmit={handleSubmit} />
             </div>
