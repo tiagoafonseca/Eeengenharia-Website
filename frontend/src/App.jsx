@@ -5,8 +5,8 @@ import AboutUs from "./pages/AboutUs.jsx";
 import Services from "./pages/Services.jsx";
 import Portfollium from "./pages/Portfollium.jsx";
 import Contacts from "./pages/Contacts.jsx";
-import NavBar from "./components/NavBar.jsx";
-import Footer from "./components/Footer.jsx";
+import NavBar from "./components/layout/NavBar.jsx";
+import Footer from "./components/layout/Footer.jsx";
 
 function ScrollToTop() {
     const { pathname } = useLocation();

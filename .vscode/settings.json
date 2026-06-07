@@ -1,6 +1,6 @@
-{
+﻿{
   "eslint.workingDirectories": [
-    { "directory": "frontend/vite-project", "changeProcessCWD": true }
+    { "directory": "frontend", "changeProcessCWD": true }
   ],
   "eslint.validate": [
     "javascript",
@@ -9,13 +9,13 @@
   "eslint.useFlatConfig": true,
   "eslint.run": "onType",
 
-  "stylelint.configFile": "frontend/vite-project/stylelint.config.cjs",
+  "stylelint.configFile": "frontend/stylelint.config.cjs",
   "stylelint.validate": ["css"],
   "css.validate": false,
   "scss.validate": false,
   "less.validate": false,
 
-  "tailwindCSS.experimental.configFile": "frontend/vite-project/src/index.css",
+  "tailwindCSS.experimental.configFile": "frontend/src/index.css",
   "tailwindCSS.includeLanguages": {
     "javascript": "javascript",
     "javascriptreact": "javascriptreact",

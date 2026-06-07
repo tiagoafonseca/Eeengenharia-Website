@@ -4,14 +4,9 @@ import { GrStatusGood } from "react-icons/gr";
 import { LuCalendarCheck } from "react-icons/lu";
 import { GrUserWorker } from "react-icons/gr";
 import { useTranslation } from "react-i18next";
-import Modal from "../components/Modal.jsx";
-import Carousel from "../components/Carousel.jsx";
-
-const SERVICES = [
-    { image: "/orcamento-img1.webp", titleKey: "houseConstruction", descKey: "houseConstructionDesc" },
-    { image: "/orcamento-img2.webp", titleKey: "renovations",       descKey: "renovationsDesc" },
-    { image: "/orcamento-img3.webp", titleKey: "projectElaboration", descKey: "projectElaborationDesc" },
-];
+import Modal from "../components/sections/Modal.jsx";
+import Carousel from "../components/sections/Carousel.jsx";
+import { HOME_SERVICES } from "../data/services.js";
 
 const HomePage = () => {
     const [showModal, setShowModal] = useState(false);
@@ -85,17 +80,17 @@ const HomePage = () => {
             <div className="flex items-center justify-center">
                 <div className="mt-25 mb-25 flex flex-col items-center justify-center">
                     <div className="grid grid-cols-3 gap-x-[200px] text-black w-full mx-auto mb-4">
-                        {SERVICES.map(({ image, titleKey, descKey }) => (
+                        {HOME_SERVICES.map(({ image, titleKey, descKey }) => (
                             <div key={titleKey} className="flex justify-center">
                                 <img src={image} alt={t(titleKey)} width="300" height="250" loading="lazy" />
                             </div>
                         ))}
-                        {SERVICES.map(({ titleKey }) => (
+                        {HOME_SERVICES.map(({ titleKey }) => (
                             <div key={titleKey + "-title"} className="text-center font-bold text-[30px] pt-5">
                                 {t(titleKey)}
                             </div>
                         ))}
-                        {SERVICES.map(({ descKey }) => (
+                        {HOME_SERVICES.map(({ descKey }) => (
                             <p key={descKey} className="text-center text-[20px] pt-5">
                                 {t(descKey)}
                             </p>

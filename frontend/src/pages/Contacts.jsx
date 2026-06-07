@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import ContactForm from "../components/ContactForm.jsx";
+import ContactForm from "../components/sections/ContactForm.jsx";
 
 const Contacts = () => {
     const { t } = useTranslation();

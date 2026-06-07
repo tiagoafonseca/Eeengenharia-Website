@@ -4,16 +4,9 @@ import { GiWorld } from "react-icons/gi";
 import { IoMenu } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
-import LanguagesFlyOut from "./LanguageFlyOut.jsx";
-import FlyOutLink from "./FlyOutLink.jsx";
-
-const NAV_ITEMS = [
-    { to: "/", labelKey: "home" },
-    { to: "/sobrenos", labelKey: "about" },
-    { to: "/servicos", labelKey: "services" },
-    { to: "/portfolio", labelKey: "portfolio" },
-    { to: "/contactos", labelKey: "contacts" },
-];
+import LanguagesFlyOut from "../ui/LanguageFlyOut.jsx";
+import FlyOutLink from "../ui/FlyOutLink.jsx";
+import { NAV_ITEMS } from "../../data/navItems.js";
 
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);

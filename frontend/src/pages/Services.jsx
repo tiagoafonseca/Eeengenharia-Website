@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { SERVICE_SECTIONS } from "../data/services.js";
 
 const Services = () => {
     const { t } = useTranslation();
-
-    const sections = [
-        { id: "moradias",    labelKey: "houseConstruction",   titleKey: "houseConstruction" },
-        { id: "remodelacoes", labelKey: "renovations",        titleKey: "renovationsInterior" },
-        { id: "projetos",    labelKey: "projectElaboration",  titleKey: "projectsLicenses" },
-    ];
-
-    const [active, setActive] = useState(sections[0].id);
+    const [active, setActive] = useState(SERVICE_SECTIONS[0].id);
 
     const BudgetDivider = () => (
         <div className="flex items-center justify-center my-15 w-[85%]">
@@ -32,7 +26,7 @@ const Services = () => {
                 <h1 className="font-bold text-[40px] mb-10">{t("servicesTitle")}</h1>
 
                 <div className="flex flex-row justify-center items-center gap-x-15 text-[25px] mb-10">
-                    {sections.map(({ id, labelKey }) => (
+                    {SERVICE_SECTIONS.map(({ id, labelKey }) => (
                         <div key={id} className="group inline-block relative">
                             <a href={`#${id}`} onClick={() => setActive(id)}>{t(labelKey)}</a>
                             <span
@@ -44,7 +38,7 @@ const Services = () => {
                     ))}
                 </div>
 
-                {sections.map(({ id, titleKey }) => (
+                {SERVICE_SECTIONS.map(({ id, titleKey }) => (
                     <div key={id} className="w-full flex flex-col items-center">
                         <BudgetDivider />
                         <section className="w-[85%]" id={id}>

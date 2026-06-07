@@ -1,12 +1,6 @@
 import { useTranslation } from "react-i18next";
-import ContactForm from "../components/ContactForm.jsx";
-
-const TEAM = [
-    { name: "David Matias", role: "Engenheiro de Obra" },
-    { name: "David Matias", role: "Engenheiro de Obra" },
-    { name: "David Matias", role: "Engenheiro de Obra" },
-    { name: "David Matias", role: "Engenheiro de Obra" },
-];
+import ContactForm from "../components/sections/ContactForm.jsx";
+import { TEAM } from "../data/team.js";
 
 const VALUES = ["Exclusividade", "Transparência", "Inovação", "Qualidade"];
 
@@ -46,7 +40,7 @@ const AboutUs = () => {
                     <div className="flex flex-row gap-x-50 w-auto pt-20">
                         {TEAM.map((member, i) => (
                             <div key={i} className="flex flex-col justify-center items-center">
-                                <img className="pb-5" src="/profile-team.webp" alt={member.name} width="120" height="120" loading="lazy" />
+                                <img className="pb-5" src={member.image} alt={member.name} width="120" height="120" loading="lazy" />
                                 <h3 className="text-[25px] font-bold">{member.name}</h3>
                                 <p>{member.role}</p>
                             </div>
