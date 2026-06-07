@@ -8,6 +8,7 @@ import translationES from './locales/es.json';
 import translationFR from './locales/fr.json';
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
+    lng: 'pt',
     fallbackLng: 'pt',
     debug: import.meta.env.DEV,
     interpolation: { escapeValue: false },
