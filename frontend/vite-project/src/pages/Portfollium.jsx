@@ -58,9 +58,9 @@ const Portfollium = () => {
                             }`}
                             id="row"
                         >
-                            <img src="/img1.png"/>
-                            <img src="/img1.png"/>
-                            <img src="/img1.png"/>
+                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" />
+                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" />
+                            <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" />
                         </div>
                     ))}
                 </div>

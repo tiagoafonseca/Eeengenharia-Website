@@ -8,9 +8,9 @@ import Modal from "../components/Modal.jsx";
 import Carousel from "../components/Carousel.jsx";
 
 const SERVICES = [
-    { image: "/orcamento-img1.png", titleKey: "houseConstruction", descKey: "houseConstructionDesc" },
-    { image: "/orcamento-img2.png", titleKey: "renovations",       descKey: "renovationsDesc" },
-    { image: "/orcamento-img3.png", titleKey: "projectElaboration", descKey: "projectElaborationDesc" },
+    { image: "/orcamento-img1.webp", titleKey: "houseConstruction", descKey: "houseConstructionDesc" },
+    { image: "/orcamento-img2.webp", titleKey: "renovations",       descKey: "renovationsDesc" },
+    { image: "/orcamento-img3.webp", titleKey: "projectElaboration", descKey: "projectElaborationDesc" },
 ];
 
 const HomePage = () => {
@@ -38,7 +38,7 @@ const HomePage = () => {
                 </div>
 
                 <div>
-                    <img src="/quem-somos.png" alt={t("whoWeAre")} />
+                    <img src="/quem-somos.webp" alt={t("whoWeAre")} width="600" height="450" loading="lazy" />
                 </div>
             </div>
 
@@ -87,7 +87,7 @@ const HomePage = () => {
                     <div className="grid grid-cols-3 gap-x-[200px] text-black w-full mx-auto mb-4">
                         {SERVICES.map(({ image, titleKey, descKey }) => (
                             <div key={titleKey} className="flex justify-center">
-                                <img src={image} alt={t(titleKey)} />
+                                <img src={image} alt={t(titleKey)} width="300" height="250" loading="lazy" />
                             </div>
                         ))}
                         {SERVICES.map(({ titleKey }) => (

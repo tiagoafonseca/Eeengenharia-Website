@@ -1,27 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins");
-@import url("https://fonts.googleapis.com/css?family=Sansation");
-@import url("https://fonts.googleapis.com/css?family=EncodedSans");
-@import url("https://fonts.googleapis.com/css?family=Roboto+Flex");
-@import url("https://fonts.googleapis.com/css?family=Inria+Serif");
 @import "tailwindcss";
 @plugin "daisyui";
 
 @theme {
     --color-primaryDark: #000000;
-
     --color-light: #ffffff;
 
-    --font-dm-sans: DM Sans, sans-serif;
-    --font-robotoGoogle: "Roboto Flex", sans-serif;
-    --font-popins: Poppins, serif;
-    --font-sansation: Sans, serif;
-    --font-nunitoSans: Nunito, sans-serif;
-    --font-encondedSans: Enconded, sans-serif;
     --font-InriaFigma: "Inria Serif", serif;
 
     --breakpoint-xs: 480px;
-
-    /*--background-image-hero-pattern: url("/hero-bg.png");*/
 }
 
 html {

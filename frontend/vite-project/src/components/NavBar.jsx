@@ -40,7 +40,7 @@ const NavBar = () => {
         >
             <div>
                 <NavLink to="/">
-                    <img src="/logo.png" alt="Eeengenharia" className="h-15 md:pl-5" />
+                    <img src="/logo.webp" alt="Eeengenharia" className="h-15 md:pl-5" width="180" height="60" />
                 </NavLink>
             </div>
 

@@ -10,7 +10,7 @@ const Footer = () => {
         <footer className="bg-black p-10">
             <div className="grid grid-cols-4 gap-x-[100px] text-white w-auto mx-auto p-10">
                 <div>
-                    <img src="/logo-footer.png" alt="Eeengenharia" />
+                    <img src="/logo-footer.webp" alt="Eeengenharia" width="160" height="50" loading="lazy" />
                     <div className="pt-10 flex flex-col gap-y-[20px]">
                         <Link to="/privacidade" className="inline-block text-base transition-transform duration-200 hover:scale-105 origin-left">
                             {t("privacyPolicy")}

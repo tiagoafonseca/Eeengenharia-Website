@@ -35,7 +35,7 @@ const AboutUs = () => {
                         </div>
 
                         <div>
-                            <img className="h-[600px] w-[1000px]" src="/aboutUs-img1.png" alt={t("ourHistory")} />
+                            <img className="h-[600px] w-[1000px]" src="/aboutUs-img1.webp" alt={t("ourHistory")} width="1000" height="600" loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ const AboutUs = () => {
                     <div className="flex flex-row gap-x-50 w-auto pt-20">
                         {TEAM.map((member, i) => (
                             <div key={i} className="flex flex-col justify-center items-center">
-                                <img className="pb-5" src="/profile-team.png" alt={member.name} />
+                                <img className="pb-5" src="/profile-team.webp" alt={member.name} width="120" height="120" loading="lazy" />
                                 <h3 className="text-[25px] font-bold">{member.name}</h3>
                                 <p>{member.role}</p>
                             </div>

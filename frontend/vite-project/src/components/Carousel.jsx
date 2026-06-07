@@ -1,88 +1,61 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 
+const SLIDES = [
+    { url: '/splide-img1.webp', alt: 'Obra Eeengenharia 1' },
+    { url: '/splide-img2.webp', alt: 'Obra Eeengenharia 2' },
+    { url: '/splide-img3.webp', alt: 'Obra Eeengenharia 3' },
+];
+
 export default function Carousel() {
-    const slides = [
-        {
-            url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80',
-        },
-
-        {
-            url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
-        },
-    ];
-
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const prevSlide = () => {
-        const isFirstSlide = currentIndex === 0;
-        const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-        setCurrentIndex(newIndex);
-    };
+    const prevSlide = () =>
+        setCurrentIndex((i) => (i === 0 ? SLIDES.length - 1 : i - 1));
 
-    const nextSlide = () => {
-        const isLastSlide = currentIndex === slides.length - 1;
-        const newIndex = isLastSlide ? 0 : currentIndex + 1;
-        setCurrentIndex(newIndex);
-    };
-
-    const goToSlide = (slideIndex) => {
-        setCurrentIndex(slideIndex);
-    };
+    const nextSlide = () =>
+        setCurrentIndex((i) => (i === SLIDES.length - 1 ? 0 : i + 1));
 
     return (
-        <div className='h-[780px] w-full pt-25 relative group'>
+        <div className="h-[780px] w-full pt-25 relative group">
             <div
-                style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-                className='w-full h-full bg-center bg-cover duration-500'
-            ></div>
-            {/* Left Arrow */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-15 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                <BsChevronCompactLeft onClick={prevSlide} size={30} />
-            </div>
-            {/* Right Arrow */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-15 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                <BsChevronCompactRight onClick={nextSlide} size={30} />
-            </div>
-            <div className='flex top-4 justify-center py-2'>
-                {slides.map((slide, slideIndex) => (
-                    <div
+                style={{ backgroundImage: `url(${SLIDES[currentIndex].url})` }}
+                className="w-full h-full bg-center bg-cover duration-500"
+                role="img"
+                aria-label={SLIDES[currentIndex].alt}
+            />
+
+            <button
+                onClick={prevSlide}
+                aria-label="Slide anterior"
+                className="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-15 items-center justify-center rounded-full p-2 bg-black/20 text-white hover:bg-black/40 transition-colors"
+            >
+                <BsChevronCompactLeft size={30} />
+            </button>
+
+            <button
+                onClick={nextSlide}
+                aria-label="Próximo slide"
+                className="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 right-15 items-center justify-center rounded-full p-2 bg-black/20 text-white hover:bg-black/40 transition-colors"
+            >
+                <BsChevronCompactRight size={30} />
+            </button>
+
+            <div className="flex justify-center py-2" role="tablist" aria-label="Slides">
+                {SLIDES.map((_, slideIndex) => (
+                    <button
                         key={slideIndex}
-                        onClick={() => goToSlide(slideIndex)}
+                        role="tab"
+                        aria-selected={slideIndex === currentIndex}
+                        aria-label={`Slide ${slideIndex + 1}`}
+                        onClick={() => setCurrentIndex(slideIndex)}
                         className={`text-3xl cursor-pointer ${slideIndex === currentIndex ? 'text-gray-400' : 'text-black'}`}
                     >
                         <RxDotFilled />
-                    </div>
+                    </button>
                 ))}
             </div>
         </div>
     );
 }
-
-
-    {/* Indicadores  flex top-4 justify-center py-2
-    <div className="absolute flex flex-row justify-center bottom-0 gap-3 w-full">
-        {slides.map((s, i) => {
-            return (
-                <div
-                    onClick={() => {
-                        setCurrentIndex(i);
-                    }}
-                    key={"circle" + i}
-                    className={`rounded-full w-4 h-4 mb-5 cursor-pointer ${i === currentIndex ? "bg-white" : "bg-gray-300"}`}
-                >
-                </div>
-            );
-        })}
-    </div> */}
-

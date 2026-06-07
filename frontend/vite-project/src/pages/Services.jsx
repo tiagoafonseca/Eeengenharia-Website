@@ -54,7 +54,7 @@ const Services = () => {
                                     <p className="text-[20px]">{t("serviceDesc")}</p>
                                 </div>
                                 <div className="flex flex-col justify-center items-center gap-y-8">
-                                    <img src="/orcamento-img2.png" alt={t(titleKey)} />
+                                    <img src="/orcamento-img2.webp" alt={t(titleKey)} width="400" height="300" loading="lazy" />
                                     <Link
                                         to="/portfolio"
                                         className="bg-white border-2 border-black text-black text-center p-2 w-[50%] hover:bg-black hover:text-white transition-all duration-300 ease-linear"
