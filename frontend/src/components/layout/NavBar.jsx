@@ -38,9 +38,9 @@ const NavBar = () => {
             </div>
 
             <div
-                className={`${
-                    isVisible ? "flex" : "hidden"
-                } md:flex flex-col md:flex-row items-center absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none py-6 md:py-0 px-10 md:px-0 z-40`}
+                className={`mobile-menu ${
+                    isVisible ? "is-open" : ""
+                } flex flex-col md:flex-row items-center absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none py-6 md:py-0 px-10 md:px-0 z-40`}
             >
                 <ul className="flex flex-col md:flex-row justify-center items-center w-full md:w-auto md:gap-[4vw] text-xl gap-8">
                     {NAV_ITEMS.map(({ to, labelKey }) => (

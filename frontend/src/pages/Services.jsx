@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Reveal from "../components/ui/Reveal.jsx";
 import { SERVICE_SECTIONS } from "../data/services.js";
 
 const Services = () => {
@@ -42,7 +43,7 @@ const Services = () => {
                     <div key={id} className="w-full flex flex-col items-center">
                         <BudgetDivider />
                         <section className="w-[90%] md:w-[85%] scroll-mt-28" id={id}>
-                            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-x-15 mt-10 md:mt-15 mb-10">
+                            <Reveal className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-x-15 mt-10 md:mt-15 mb-10">
                                 <div className="flex flex-col justify-start gap-y-5 w-full md:w-[60%]">
                                     <h2 className="font-bold text-2xl md:text-[25px]">{t(titleKey)}</h2>
                                     <p className="text-lg md:text-[20px]">{t("serviceDesc")}</p>
@@ -56,7 +57,7 @@ const Services = () => {
                                         {t("viewProjects")}
                                     </Link>
                                 </div>
-                            </div>
+                            </Reveal>
                         </section>
                     </div>
                 ))}

@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import ContactForm from "../components/sections/ContactForm.jsx";
+import Reveal from "../components/ui/Reveal.jsx";
 import { TEAM } from "../data/team.js";
 
 const VALUES = ["Exclusividade", "Transparência", "Inovação", "Qualidade"];
@@ -17,7 +18,7 @@ const AboutUs = () => {
                 <div className="flex flex-col justify-center items-center text-black pb-12 md:pb-20 mt-24 md:mt-30 mb-10 px-6 md:p-10">
                     <h1 className="font-bold text-3xl md:text-[40px] text-center">{t("ourHistory")}</h1>
                     <div className="flex flex-col lg:flex-row justify-evenly items-center gap-10 lg:gap-x-20 pt-12 md:pt-20 w-full">
-                        <div className="text-lg md:text-xl font-normal lg:pt-10 lg:w-1/2">
+                        <Reveal className="text-lg md:text-xl font-normal lg:pt-10 lg:w-1/2">
                             <p className="p-2">{t("historyP1")}</p>
                             <p className="p-2">{t("historyP2")}</p>
                             <p className="p-2">{t("historyP3")}</p>
@@ -26,11 +27,11 @@ const AboutUs = () => {
                                 {VALUES.map((v) => <li key={v}>{v}</li>)}
                             </ul>
                             <p className="p-2">{t("historyP4")}</p>
-                        </div>
+                        </Reveal>
 
-                        <div className="lg:w-1/2 flex justify-center">
+                        <Reveal delay={150} className="lg:w-1/2 flex justify-center">
                             <img className="w-full max-w-[1000px] h-auto" src="/aboutUs-img1.webp" alt={t("ourHistory")} width="1000" height="600" loading="lazy" />
-                        </div>
+                        </Reveal>
                     </div>
                 </div>
 
@@ -39,11 +40,11 @@ const AboutUs = () => {
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-x-50 w-auto pt-12 md:pt-20">
                         {TEAM.map((member, i) => (
-                            <div key={i} className="flex flex-col justify-center items-center">
+                            <Reveal key={i} delay={i * 100} className="flex flex-col justify-center items-center">
                                 <img className="pb-5" src={member.image} alt={member.name} width="120" height="120" loading="lazy" />
                                 <h3 className="text-xl md:text-[25px] font-bold text-center">{member.name}</h3>
                                 <p className="text-center">{member.role}</p>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
 

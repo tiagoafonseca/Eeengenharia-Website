@@ -1,5 +1,6 @@
-import { useRef, useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import Reveal from "../components/ui/Reveal.jsx";
 
 const ROW_COUNT = 5;
 
@@ -7,28 +8,6 @@ const Portfollium = () => {
     const { t } = useTranslation();
     const botoes = [t("portfolio"), "Filtrar", "Reviews", t("requestBudget")];
     const [active, setActive] = useState(botoes[0]);
-
-    const rowsRef = useRef([]);
-    const [visibleStates, setVisibleStates] = useState(Array(ROW_COUNT).fill(false));
-
-    useEffect(() => {
-        const observers = rowsRef.current.map((node, index) => {
-            if (!node) return null;
-            const observer = new IntersectionObserver(([entry]) => {
-                setVisibleStates((prev) => {
-                    const updated = [...prev];
-                    updated[index] = entry.isIntersecting;
-                    return updated;
-                });
-            });
-            observer.observe(node);
-            return observer;
-        });
-
-        return () => {
-            observers.forEach((observer) => observer?.disconnect());
-        };
-    }, []);
 
     return (
         <main>
@@ -49,22 +28,20 @@ const Portfollium = () => {
                 </div>
 
                 <div className="flex flex-col justify-center items-center gap-5 w-full max-w-6xl">
-                    {Array.from({length: ROW_COUNT}).map((_, i) => (
-                        <div
+                    {Array.from({ length: ROW_COUNT }).map((_, i) => (
+                        <Reveal
                             key={i}
-                            ref={(el) => { rowsRef.current[i] = el; }}
-                            className={`portfolio-row grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full transition-opacity ease-in duration-700 ${
-                                visibleStates[i] ? "opacity-100" : "opacity-0"
-                            }`}
+                            className="portfolio-row grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full"
                         >
                             <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" className="w-full h-auto" />
                             <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" className="w-full h-auto" />
                             <img src="/img1.webp" alt="" width="400" height="300" loading="lazy" className="w-full h-auto" />
-                        </div>
+                        </Reveal>
                     ))}
                 </div>
             </div>
         </main>
     );
-}
-export default Portfollium
+};
+
+export default Portfollium;

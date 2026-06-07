@@ -29,3 +29,26 @@ button:hover {
 .portfolio-row img:hover {
     @apply brightness-75;
 }
+
+/* Menu mobile: fade-in + slide-down ao abrir (apenas abaixo do breakpoint md) */
+@media (max-width: 767px) {
+    .mobile-menu {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-0.75rem);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+    }
+
+    .mobile-menu.is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mobile-menu {
+        transition: none;
+    }
+}
