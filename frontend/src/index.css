@@ -22,14 +22,6 @@ button:hover {
     cursor: pointer;
 }
 
-.portfolio-row img {
-    @apply transition-all duration-300 ease-in-out;
-}
-
-.portfolio-row img:hover {
-    @apply brightness-75;
-}
-
 /* Menu mobile: fade-in + slide-down ao abrir (apenas abaixo do breakpoint md) */
 @media (max-width: 767px) {
     .mobile-menu {

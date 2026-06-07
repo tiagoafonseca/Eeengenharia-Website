@@ -53,5 +53,13 @@
   "formSend": "Envoyer",
   "formHouse": "Maison",
   "formRenovations": "Rénovations",
-  "formProjects": "Projets & Licences"
+  "formProjects": "Projets & Licences",
+  "allProjects": "Tous",
+  "close": "Fermer",
+  "previous": "Précédent",
+  "next": "Suivant",
+  "noProjects": "Aucun projet dans cette catégorie.",
+  "serviceDescMoradias": "Nous construisons votre maison à partir de zéro avec la technologie LSF (Light Steel Framing) : des structures plus légères, rapides à monter et offrant d'excellentes performances thermiques et acoustiques. Nous nous occupons de tout, des fondations aux finitions, dans les délais.",
+  "serviceDescRemodelacoes": "Nous rénovons et transformons les espaces intérieurs et extérieurs — cuisines, salles de bains, extensions ou réhabilitations complètes. Des matériaux de qualité et des finitions soignées, adaptés à votre budget.",
+  "serviceDescProjetos": "Nous élaborons le projet d'architecture et d'ingénierie et gérons toutes les démarches d'autorisation auprès des autorités. Nous prenons en charge les formalités du début à la fin pour que vous n'ayez pas à vous en soucier."
 }

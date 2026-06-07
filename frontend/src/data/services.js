@@ -5,7 +5,7 @@ export const HOME_SERVICES = [
 ];
 
 export const SERVICE_SECTIONS = [
-    { id: "moradias",     labelKey: "houseConstruction",  titleKey: "houseConstruction" },
-    { id: "remodelacoes", labelKey: "renovations",        titleKey: "renovationsInterior" },
-    { id: "projetos",     labelKey: "projectElaboration", titleKey: "projectsLicenses" },
+    { id: "moradias",     labelKey: "houseConstruction",  titleKey: "houseConstruction",  descKey: "serviceDescMoradias",     image: "/orcamento-img1.webp" },
+    { id: "remodelacoes", labelKey: "renovations",        titleKey: "renovationsInterior", descKey: "serviceDescRemodelacoes", image: "/orcamento-img2.webp" },
+    { id: "projetos",     labelKey: "projectElaboration", titleKey: "projectsLicenses",    descKey: "serviceDescProjetos",     image: "/orcamento-img3.webp" },
 ];

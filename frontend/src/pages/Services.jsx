@@ -39,17 +39,17 @@ const Services = () => {
                     ))}
                 </div>
 
-                {SERVICE_SECTIONS.map(({ id, titleKey }) => (
+                {SERVICE_SECTIONS.map(({ id, titleKey, descKey, image }) => (
                     <div key={id} className="w-full flex flex-col items-center">
                         <BudgetDivider />
                         <section className="w-[90%] md:w-[85%] scroll-mt-28" id={id}>
                             <Reveal className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-x-15 mt-10 md:mt-15 mb-10">
                                 <div className="flex flex-col justify-start gap-y-5 w-full md:w-[60%]">
                                     <h2 className="font-bold text-2xl md:text-[25px]">{t(titleKey)}</h2>
-                                    <p className="text-lg md:text-[20px]">{t("serviceDesc")}</p>
+                                    <p className="text-lg md:text-[20px]">{t(descKey)}</p>
                                 </div>
                                 <div className="flex flex-col justify-center items-center gap-y-8 w-full md:w-auto">
-                                    <img src="/orcamento-img2.webp" alt={t(titleKey)} width="400" height="300" loading="lazy" className="w-full max-w-[400px] h-auto" />
+                                    <img src={image} alt={t(titleKey)} width="400" height="300" loading="lazy" className="w-full max-w-[400px] h-auto" />
                                     <Link
                                         to="/portfolio"
                                         className="bg-white border-2 border-black text-black text-center p-2 w-[70%] md:w-[50%] hover:bg-black hover:text-white transition-all duration-300 ease-linear"
