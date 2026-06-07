@@ -49,7 +49,7 @@ const Services = () => {
                                     <p className="text-lg md:text-[20px]">{t(descKey)}</p>
                                 </div>
                                 <div className="flex flex-col justify-center items-center gap-y-8 w-full md:w-auto">
-                                    <img src={image} alt={t(titleKey)} width="400" height="300" loading="lazy" className="w-full max-w-[400px] h-auto" />
+                                    <img src={image} alt={t(titleKey)} width="400" height="300" loading="lazy" decoding="async" className="w-full max-w-[400px] h-auto" />
                                     <Link
                                         to="/portfolio"
                                         className="bg-white dark:bg-neutral-900 border-2 border-black dark:border-neutral-100 text-black dark:text-neutral-100 text-center p-2 w-[70%] md:w-[50%] hover:bg-black hover:text-white dark:hover:bg-neutral-100 dark:hover:text-black transition-all duration-300 ease-linear"

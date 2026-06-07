@@ -26,14 +26,56 @@
     <meta name="keywords" content="construção civil, LSF, moradias, remodelações, projetos, licenciamentos, Portugal" />
     <meta name="author" content="Eeengenharia" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / redes sociais
+         NOTA: og:url e og:image têm de ser URLs ABSOLUTOS. Se o domínio mudar,
+         atualiza https://eeegenharia.com aqui em baixo (og:url, og:image, twitter:image). -->
     <meta property="og:title" content="Eeengenharia — Construção Civil & LSF" />
     <meta property="og:description" content="Empresa familiar de construção civil especializada em LSF. Construção de moradias, remodelações e projetos à medida." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:url" content="https://eeegenharia.com/" />
+    <meta property="og:site_name" content="Eeengenharia" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:image" content="https://eeegenharia.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eeengenharia — Construção Civil & LSF" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eeengenharia — Construção Civil & LSF" />
+    <meta name="twitter:description" content="Empresa familiar de construção civil especializada em LSF. Construção de moradias, remodelações e projetos à medida." />
+    <meta name="twitter:image" content="https://eeegenharia.com/og-image.jpg" />
+
+    <!-- Favicon / PWA -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Dados estruturados (SEO). Quando a empresa tiver morada, adiciona um bloco
+         "address" do tipo PostalAddress (streetAddress, postalCode, addressLocality). -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "Eeengenharia",
+      "description": "Empresa familiar de construção civil especializada em LSF. Construção de moradias, remodelações e projetos à medida.",
+      "url": "https://eeegenharia.com",
+      "logo": "https://eeegenharia.com/logo.png",
+      "image": "https://eeegenharia.com/og-image.jpg",
+      "email": "geral@eeengenharia.pt",
+      "telephone": "+351913928625",
+      "areaServed": "PT",
+      "sameAs": [
+        "https://www.instagram.com/eeengenharia_pt/",
+        "https://www.facebook.com/EEEngenharia/"
+      ]
+    }
+    </script>
+
+    <!-- Preload da 1ª imagem do hero (carousel) para acelerar o LCP.
+         O hero usa background-image, que o browser descobre tarde; o preload adianta-a. -->
+    <link rel="preload" as="image" href="/splide-img1.webp" fetchpriority="high" />
 
     <!-- Fonts: preconnect first, then load only the fonts actually used -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

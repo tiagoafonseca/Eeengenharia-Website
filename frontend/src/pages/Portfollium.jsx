@@ -58,7 +58,7 @@ const Portfollium = () => {
                                         alt={project.label}
                                         width="400"
                                         height="300"
-                                        loading="lazy"
+                                        loading="lazy" decoding="async"
                                         className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
                                     />
                                 </button>

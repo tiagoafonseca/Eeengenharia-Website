@@ -39,7 +39,7 @@ const HomePage = () => {
                 </Reveal>
 
                 <Reveal delay={150} className="w-full md:w-1/2 flex justify-center">
-                    <img src="/quem-somos.webp" alt={t("whoWeAre")} width="600" height="450" loading="lazy" className="w-full max-w-[600px] h-auto" />
+                    <img src="/quem-somos.webp" alt={t("whoWeAre")} width="600" height="450" loading="lazy" decoding="async" className="w-full max-w-[600px] h-auto" />
                 </Reveal>
             </div>
 
@@ -69,7 +69,7 @@ const HomePage = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 lg:gap-x-[200px] text-black dark:text-neutral-100 w-full max-w-6xl mx-auto mb-4">
                         {HOME_SERVICES.map(({ image, titleKey, descKey }, i) => (
                             <Reveal key={titleKey} delay={i * 120} className="flex flex-col items-center">
-                                <img src={image} alt={t(titleKey)} width="300" height="250" loading="lazy" className="w-full max-w-[300px] h-auto" />
+                                <img src={image} alt={t(titleKey)} width="300" height="250" loading="lazy" decoding="async" className="w-full max-w-[300px] h-auto" />
                                 <h2 className="text-center font-bold text-2xl md:text-3xl pt-5">{t(titleKey)}</h2>
                                 <p className="text-center text-lg md:text-xl pt-4">{t(descKey)}</p>
                             </Reveal>

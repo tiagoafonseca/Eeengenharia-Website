@@ -26,7 +26,7 @@ const AboutUs = () => {
                         </Reveal>
 
                         <Reveal delay={150} className="lg:w-1/2 flex justify-center">
-                            <img className="w-full max-w-[1000px] h-auto" src="/aboutUs-img1.webp" alt={t("ourHistory")} width="1000" height="600" loading="lazy" />
+                            <img className="w-full max-w-[1000px] h-auto" src="/aboutUs-img1.webp" alt={t("ourHistory")} width="1000" height="600" loading="lazy" decoding="async" />
                         </Reveal>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ const AboutUs = () => {
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-x-50 w-auto pt-12 md:pt-20">
                         {TEAM.map((member, i) => (
                             <Reveal key={i} delay={i * 100} className="flex flex-col justify-center items-center">
-                                <img className="pb-5" src={member.image} alt={member.name} width="120" height="120" loading="lazy" />
+                                <img className="pb-5" src={member.image} alt={member.name} width="120" height="120" loading="lazy" decoding="async" />
                                 <h3 className="text-xl md:text-[25px] font-bold text-center">{member.name}</h3>
                                 <p className="text-center">{member.role}</p>
                             </Reveal>
