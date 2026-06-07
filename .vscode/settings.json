@@ -1,0 +1,43 @@
+{
+  "eslint.workingDirectories": [
+    { "directory": "frontend/vite-project", "changeProcessCWD": true }
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact"
+  ],
+  "eslint.useFlatConfig": true,
+  "eslint.run": "onType",
+
+  "stylelint.configFile": "frontend/vite-project/stylelint.config.cjs",
+  "stylelint.validate": ["css"],
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+
+  "tailwindCSS.experimental.configFile": "frontend/vite-project/src/index.css",
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "html": "html"
+  },
+  "tailwindCSS.classAttributes": ["class", "className"],
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.lint.invalidApply": "error",
+  "tailwindCSS.lint.invalidConfigPath": "error",
+  "tailwindCSS.lint.invalidScreen": "error",
+  "tailwindCSS.lint.invalidTailwindDirective": "error",
+  "tailwindCSS.lint.invalidVariant": "error",
+  "tailwindCSS.lint.recommendedVariantOrder": "warning",
+
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+  "errorLens.excludeBySource": []
+}

@@ -23,7 +23,7 @@ export default function LanguagesFlyOut({currentLanguage, setCurrentLanguage}) {
                 {languages
                     .filter((lang) => lang.code !== currentLanguage) // só mostra as que não estão ativas
                     .map((lang) => (
-                        <div key={lang} className="group inline-block relative w-full text-center">
+                        <div key={lang.code} className="group inline-block relative w-full text-center">
                             <button
                                 onMouseEnter={() => setIsHover(lang.code)}
                                 onMouseLeave={() => setIsHover(null)}

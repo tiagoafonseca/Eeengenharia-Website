@@ -1,47 +1,42 @@
-import {useRef, useEffect, useState} from "react";
-import Modal from "../components/Modal.jsx";
+import { useRef, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+const ROW_COUNT = 5;
 
 const Portfollium = () => {
-    const Botoes = ["Todos", "Filtrar", "Reviews", "Orçamento"];
-    const [active, setActive] = useState("Todos");
+    const { t } = useTranslation();
+    const botoes = [t("portfolio"), "Filtrar", "Reviews", t("requestBudget")];
+    const [active, setActive] = useState(botoes[0]);
 
-    const refs = Array.from({length: 5}, () => useRef());
-    const [visibleStates, setVisibleStates] = useState(Array(5).fill(false));
+    const rowsRef = useRef([]);
+    const [visibleStates, setVisibleStates] = useState(Array(ROW_COUNT).fill(false));
 
     useEffect(() => {
-        const observers = refs.map((ref, index) => {
+        const observers = rowsRef.current.map((node, index) => {
+            if (!node) return null;
             const observer = new IntersectionObserver(([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisibleStates((prev) => {
-                        const updated = [...prev];
-                        updated[index] = entry.isIntersecting;
-                        return updated;
-                    });
-                } else {
-                    setVisibleStates((prev) => {
-                        const updated = [...prev];
-                        updated[index] = false;
-                        return updated;
-                    });
-                }
+                setVisibleStates((prev) => {
+                    const updated = [...prev];
+                    updated[index] = entry.isIntersecting;
+                    return updated;
+                });
             });
-
-            if (ref.current) observer.observe(ref.current);
+            observer.observe(node);
             return observer;
         });
 
         return () => {
-            observers.forEach((observer) => observer.disconnect());
+            observers.forEach((observer) => observer?.disconnect());
         };
-    }, [refs]);
+    }, []);
 
     return (
         <main>
             <div className="flex flex-col justify-center items-center mt-30 mb-10 p-10">
-                <h1 className="font-bold text-[40px] mb-10">PORTFÓLIO</h1>
+                <h1 className="font-bold text-[40px] mb-10">{t("portfolioTitle")}</h1>
 
                 <div className="flex flex-row justify-center items-center gap-x-15 text-[25px] mb-10">
-                    {Botoes.map((label) => (
+                    {botoes.map((label) => (
                         <div key={label} className="group inline-block relative">
                             <button onClick={() => setActive(label)}>{label}</button>
                             <span
@@ -54,10 +49,10 @@ const Portfollium = () => {
                 </div>
 
                 <div className="flex flex-col justify-center items-center gap-y-5">
-                    {refs.map((ref, i) => (
+                    {Array.from({length: ROW_COUNT}).map((_, i) => (
                         <div
                             key={i}
-                            ref={ref}
+                            ref={(el) => { rowsRef.current[i] = el; }}
                             className={`flex flex-row justify-center gap-x-5 transition-opacity ease-in duration-700 ${
                                 visibleStates[i] ? "opacity-100" : "opacity-0"
                             }`}
