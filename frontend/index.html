@@ -4,6 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Dark mode desativado por agora. Para reativar, descomenta este script
+         (aplica o tema guardado antes do paint para evitar flash/FOUC) e o
+         <ThemeToggle /> no NavBar. -->
+    <!--
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) { /* ignore */ }
+      })();
+    </script>
+    -->
+
     <!-- SEO -->
     <title>Eeengenharia — Construção Civil & LSF</title>
     <meta name="description" content="Empresa familiar de construção civil especializada em LSF. Construção de moradias, remodelações e projetos à medida. Contacte-nos para um orçamento." />

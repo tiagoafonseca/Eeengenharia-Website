@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 import LanguagesFlyOut from "../ui/LanguageFlyOut.jsx";
 import FlyOutLink from "../ui/FlyOutLink.jsx";
+// import ThemeToggle from "../ui/ThemeToggle.jsx"; // dark mode desativado por agora
 import { NAV_ITEMS } from "../../data/navItems.js";
 
 const NavBar = () => {
@@ -27,8 +28,8 @@ const NavBar = () => {
 
     return (
         <nav
-            className={`bg-white flex justify-between items-center w-full mx-auto py-5 px-10 relative md:fixed md:top-0 md:left-0 md:z-50 ${
-                scrolled ? "shadow-md border-b-0" : "border-black border-b-2"
+            className={`bg-white dark:bg-neutral-900 flex justify-between items-center w-full mx-auto py-5 px-10 relative md:fixed md:top-0 md:left-0 md:z-50 ${
+                scrolled ? "shadow-md border-b-0" : "border-black dark:border-neutral-100 border-b-2"
             }`}
         >
             <div>
@@ -40,7 +41,7 @@ const NavBar = () => {
             <div
                 className={`mobile-menu ${
                     isVisible ? "is-open" : ""
-                } flex flex-col md:flex-row items-center absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none py-6 md:py-0 px-10 md:px-0 z-40`}
+                } flex flex-col md:flex-row items-center absolute md:static top-full left-0 w-full md:w-auto bg-white dark:bg-neutral-900 md:bg-transparent md:dark:bg-transparent shadow-md md:shadow-none py-6 md:py-0 px-10 md:px-0 z-40`}
             >
                 <ul className="flex flex-col md:flex-row justify-center items-center w-full md:w-auto md:gap-[4vw] text-xl gap-8">
                     {NAV_ITEMS.map(({ to, labelKey }) => (
@@ -69,6 +70,11 @@ const NavBar = () => {
                             <GiWorld />
                         </FlyOutLink>
                     </li>
+
+                    {/* Dark mode desativado por agora — para reativar, descomenta o import e este item:
+                    <li>
+                        <ThemeToggle />
+                    </li> */}
                 </ul>
             </div>
 

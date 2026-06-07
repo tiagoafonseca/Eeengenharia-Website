@@ -76,7 +76,7 @@ export default function Carousel() {
                         aria-selected={slideIndex === currentIndex}
                         aria-label={`Slide ${slideIndex + 1}`}
                         onClick={() => setCurrentIndex(slideIndex)}
-                        className={`text-3xl cursor-pointer ${slideIndex === currentIndex ? 'text-gray-400' : 'text-black'}`}
+                        className={`text-3xl cursor-pointer ${slideIndex === currentIndex ? 'text-gray-400' : 'text-black dark:text-neutral-100'}`}
                     >
                         <RxDotFilled />
                     </button>

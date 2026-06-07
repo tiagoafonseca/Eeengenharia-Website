@@ -8,14 +8,10 @@ const VALUES = ["Exclusividade", "Transparência", "Inovação", "Qualidade"];
 const AboutUs = () => {
     const { t } = useTranslation();
 
-    const handleContactSubmit = (formData) => {
-        console.log("Contacto submetido:", formData);
-    };
-
     return (
         <main>
-            <div className="text-black">
-                <div className="flex flex-col justify-center items-center text-black pb-12 md:pb-20 mt-24 md:mt-30 mb-10 px-6 md:p-10">
+            <div className="text-black dark:text-neutral-100">
+                <div className="flex flex-col justify-center items-center text-black dark:text-neutral-100 pb-12 md:pb-20 mt-24 md:mt-30 mb-10 px-6 md:p-10">
                     <h1 className="font-bold text-3xl md:text-[40px] text-center">{t("ourHistory")}</h1>
                     <div className="flex flex-col lg:flex-row justify-evenly items-center gap-10 lg:gap-x-20 pt-12 md:pt-20 w-full">
                         <Reveal className="text-lg md:text-xl font-normal lg:pt-10 lg:w-1/2">
@@ -54,11 +50,11 @@ const AboutUs = () => {
                     </div>
                 </div>
 
-                <div className="bg-white pt-12 md:pt-20 text-black mb-16 md:mb-25">
+                <div className="bg-white dark:bg-neutral-950 pt-12 md:pt-20 text-black dark:text-neutral-100 mb-16 md:mb-25">
                     <div className="flex justify-center mb-10">
                         <h2 className="font-bold text-3xl md:text-[40px] text-center px-6">{t("contactUs")}</h2>
                     </div>
-                    <ContactForm onSubmit={handleContactSubmit} />
+                    <ContactForm />
                 </div>
             </div>
         </main>

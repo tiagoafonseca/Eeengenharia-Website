@@ -30,11 +30,11 @@ const HomePage = () => {
                     <div className="group inline-block relative cursor-pointer mt-10 md:mt-15">
                         <Link
                             to="/sobrenos"
-                            className="font-semibold text-black text-xl md:text-2xl transition-colors duration-300 group-hover:text-black"
+                            className="font-semibold text-black dark:text-neutral-100 text-xl md:text-2xl transition-colors duration-300 group-hover:text-black dark:group-hover:text-neutral-100"
                         >
                             {t("learnMore")}
                         </Link>
-                        <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full" />
+                        <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-black dark:bg-neutral-100 transition-all duration-300 group-hover:w-full" />
                     </div>
                 </Reveal>
 
@@ -66,7 +66,7 @@ const HomePage = () => {
 
             <div className="flex items-center justify-center px-6">
                 <div className="mt-16 mb-16 md:mt-25 md:mb-25 flex flex-col items-center justify-center w-full">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 lg:gap-x-[200px] text-black w-full max-w-6xl mx-auto mb-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 lg:gap-x-[200px] text-black dark:text-neutral-100 w-full max-w-6xl mx-auto mb-4">
                         {HOME_SERVICES.map(({ image, titleKey, descKey }, i) => (
                             <Reveal key={titleKey} delay={i * 120} className="flex flex-col items-center">
                                 <img src={image} alt={t(titleKey)} width="300" height="250" loading="lazy" className="w-full max-w-[300px] h-auto" />
@@ -79,7 +79,7 @@ const HomePage = () => {
                     <div className="flex items-center justify-center">
                         <button
                             onClick={() => setShowModal(true)}
-                            className="bg-black mt-10 px-6 py-4 text-white text-lg md:text-xl hover:bg-gray-400 transition-all duration-300 ease-linear"
+                            className="bg-black dark:bg-white mt-10 px-6 py-4 text-white dark:text-black text-lg md:text-xl hover:bg-gray-400 dark:hover:bg-neutral-300 transition-all duration-300 ease-linear"
                         >
                             {t("requestBudget")}
                         </button>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+
+/* Dark mode controlado por classe .dark no <html> (toggle manual) */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
     --color-primaryDark: #000000;
@@ -15,7 +17,12 @@ html {
 }
 
 body {
-    @apply font-InriaFigma;
+    @apply font-InriaFigma bg-white text-black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+    @apply bg-neutral-950 text-neutral-100;
 }
 
 button:hover {

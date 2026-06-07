@@ -33,7 +33,7 @@ const Portfollium = () => {
                         <div key={id} className="group inline-block relative">
                             <button onClick={() => changeCategory(id)}>{t(labelKey)}</button>
                             <span
-                                className={`absolute left-0 -bottom-1 h-[2px] bg-black transition-all duration-300 ${
+                                className={`absolute left-0 -bottom-1 h-[2px] bg-black dark:bg-neutral-100 transition-all duration-300 ${
                                     activeCategory === id ? "w-full" : "w-0 group-hover:w-full"
                                 }`}
                             />

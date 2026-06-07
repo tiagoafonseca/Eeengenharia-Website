@@ -18,7 +18,7 @@ export default function LanguagesFlyOut({currentLanguage, setCurrentLanguage}) {
     const [isHover, setIsHover] = useState(null);
 
     return (
-        <div className="h-[125px] w-[102px] top-2 bg-white shadow-xl text-[15px]">
+        <div className="h-[125px] w-[102px] top-2 bg-white dark:bg-neutral-800 shadow-xl text-[15px]">
             <div className="flex flex-col justify-center items-center gap-y-2 py-2">
                 {languages
                     .filter((lang) => lang.code !== currentLanguage) // só mostra as que não estão ativas
@@ -34,7 +34,7 @@ export default function LanguagesFlyOut({currentLanguage, setCurrentLanguage}) {
                                 {lang.lang} <GiWorld/>
                             </button>
                             <span
-                                className={`absolute left-5 bottom-0 h-[1px] bg-black transition-all duration-300 ${
+                                className={`absolute left-5 bottom-0 h-[1px] bg-black dark:bg-neutral-100 transition-all duration-300 ${
                                     isHover === lang.code ? "w-15" : "w-0"}`}
                             />
                         </div>
