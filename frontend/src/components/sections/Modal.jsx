@@ -1,28 +1,37 @@
 import { IoClose } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 import ContactForm from "./ContactForm.jsx";
 
 const Modal = ({ isVisible, onClose }) => {
+    const { t } = useTranslation();
     if (!isVisible) return null;
 
     return (
         <div
-            className="fixed inset-0 bg-opacity-25 backdrop-blur-md flex justify-center items-center p-4"
+            className="fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm flex justify-center items-center p-4"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
+            onClick={onClose}
         >
-            <div className="p-4 md:p-5 bg-white dark:bg-neutral-900 w-full max-w-2xl max-h-[90vh] overflow-y-auto flex flex-col items-center text-black dark:text-neutral-100 rounded-xl border border-gray-500 dark:border-neutral-700">
+            <div
+                className="relative bg-paper w-full max-w-2xl max-h-[90vh] overflow-y-auto px-6 md:px-12 py-12 md:py-14 text-ink shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <button
-                    className="text-[20px] p-3 place-self-end hover:text-gray-500 transition-colors"
+                    className="absolute top-5 right-5 text-2xl text-muted hover:text-ink transition-colors"
                     onClick={onClose}
-                    aria-label="Fechar"
+                    aria-label={t("close")}
                 >
                     <IoClose />
                 </button>
-                <div className="text-2xl md:text-[30px] font-bold pb-5">
-                    <h2 id="modal-title" className="text-center">Vamos lá ouvir essa proposta!</h2>
+
+                <div className="text-center mb-10">
+                    <p className="eyebrow mb-5">{t("ebContact")}</p>
+                    <h2 id="modal-title" className="text-3xl md:text-4xl">{t("requestBudget")}</h2>
                 </div>
-                <ContactForm />
+
+                <ContactForm onSuccess={() => {}} />
             </div>
         </div>
     );

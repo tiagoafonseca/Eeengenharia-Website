@@ -15,24 +15,21 @@ const LegalPage = ({ titleKey, introKey }) => {
 
     return (
         <main>
-            <div className="max-w-3xl mx-auto mt-24 md:mt-30 mb-16 md:mb-25 px-6 md:px-10">
-                <h1 className="font-bold text-3xl md:text-[40px] mb-2 text-center">{t(titleKey)}</h1>
-                <p className="text-center text-sm text-gray-500 dark:text-neutral-400 mb-10">
+            <div className="max-w-3xl mx-auto pt-32 md:pt-44 pb-24 md:pb-32 px-6 md:px-12">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl mb-3 text-center">{t(titleKey)}</h1>
+                <p className="eyebrow text-center mb-12">
                     {t("legalUpdated")}: {LAST_UPDATED}
                 </p>
 
-                <p className="text-lg md:text-xl leading-relaxed mb-8">{t(introKey)}</p>
+                <p className="text-lg text-ink/70 font-light mb-8">{t(introKey)}</p>
 
-                <p className="text-base md:text-lg leading-relaxed bg-gray-100 dark:bg-neutral-800 border-l-4 border-black dark:border-neutral-100 p-5">
+                <p className="text-base text-ink/70 font-light bg-surface border-l-2 border-ink p-6">
                     {t("legalNote")}
                 </p>
 
                 <div className="mt-12 text-center">
-                    <Link
-                        to="/contactos"
-                        className="inline-block font-semibold text-lg border-b-2 border-black dark:border-neutral-100 hover:opacity-70 transition-opacity"
-                    >
-                        {t("contactUs")}
+                    <Link to="/contactos" className="link-arrow">
+                        {t("contactUs")} <span aria-hidden="true">→</span>
                     </Link>
                 </div>
             </div>

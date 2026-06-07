@@ -13,13 +13,14 @@ export default function LanguagesFlyOut({currentLanguage, setCurrentLanguage}) {
     const {i18n} = useTranslation()
 
     const changeLanguage = (lang) => {
-        i18n.changeLanguage(lang)
+        // Pequeno compasso de espera para uma transição mais suave
+        setTimeout(() => i18n.changeLanguage(lang), 250)
     }
     const [isHover, setIsHover] = useState(null);
 
     return (
-        <div className="h-[125px] w-[102px] top-2 bg-white dark:bg-neutral-800 shadow-xl text-[15px]">
-            <div className="flex flex-col justify-center items-center gap-y-2 py-2">
+        <div className="w-[110px] text-[14px]">
+            <div className="flex flex-col justify-center items-center gap-y-1 py-3">
                 {languages
                     .filter((lang) => lang.code !== currentLanguage) // só mostra as que não estão ativas
                     .map((lang) => (
@@ -28,14 +29,14 @@ export default function LanguagesFlyOut({currentLanguage, setCurrentLanguage}) {
                                 onMouseEnter={() => setIsHover(lang.code)}
                                 onMouseLeave={() => setIsHover(null)}
                                 id={lang.code}
-                                onClick={() => {setCurrentLanguage(lang.code); changeLanguage(lang.code)}}
-                                className="flex flex-row justify-center items-center gap-x-2 w-full py-1"
+                                onClick={() => {setCurrentLanguage(lang.code); changeLanguage(lang.code); window.scrollTo({ top: 0, behavior: "smooth" })}}
+                                className="flex flex-row justify-center items-center gap-x-2 w-full py-2 uppercase tracking-[0.15em] hover:text-muted transition-colors"
                             >
                                 {lang.lang} <GiWorld/>
                             </button>
                             <span
-                                className={`absolute left-5 bottom-0 h-[1px] bg-black dark:bg-neutral-100 transition-all duration-300 ${
-                                    isHover === lang.code ? "w-15" : "w-0"}`}
+                                className={`absolute left-1/2 -translate-x-1/2 bottom-0 h-px bg-ink dark:bg-neutral-100 transition-all duration-300 ${
+                                    isHover === lang.code ? "w-10" : "w-0"}`}
                             />
                         </div>
                     ))}

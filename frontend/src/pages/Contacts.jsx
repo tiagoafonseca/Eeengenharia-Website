@@ -1,17 +1,31 @@
 import { useTranslation } from "react-i18next";
 import ContactForm from "../components/sections/ContactForm.jsx";
+import Reveal from "../components/ui/Reveal.jsx";
+import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 
 const Contacts = () => {
     const { t } = useTranslation();
 
     return (
         <main>
-            <div className="bg-white dark:bg-neutral-950 text-black dark:text-neutral-100 mt-24 md:mt-30 mb-10 px-6 md:p-10">
-                <div className="flex justify-center mb-10">
-                    <h1 className="font-bold text-3xl md:text-[40px] text-center">{t("contactsTitle")}</h1>
-                </div>
-                <ContactForm />
-            </div>
+            <section className="max-w-5xl mx-auto px-6 md:px-12 pt-32 md:pt-44 pb-24 md:pb-32">
+                <Reveal className="text-center mb-12 md:mb-16">
+                    <p className="eyebrow mb-6">{t("ebContact")}</p>
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl mb-8">{t("contactUs")}</h1>
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-10 text-ink/70 font-light">
+                        <a href="mailto:geral@eeengenharia.pt" className="inline-flex items-center gap-2 hover:text-ink transition-colors">
+                            <IoMailOutline /> geral@eeengenharia.pt
+                        </a>
+                        <a href="tel:+351913928625" className="inline-flex items-center gap-2 hover:text-ink transition-colors">
+                            <IoCallOutline /> +351 913 928 625
+                        </a>
+                    </div>
+                </Reveal>
+
+                <Reveal delay={100}>
+                    <ContactForm />
+                </Reveal>
+            </section>
         </main>
     );
 };

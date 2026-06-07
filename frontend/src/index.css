@@ -1,13 +1,19 @@
 @import "tailwindcss";
 
-/* Dark mode controlado por classe .dark no <html> (toggle manual) */
+/* Dark mode controlado por classe .dark no <html> (toggle manual, desativado por agora) */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-primaryDark: #000000;
-    --color-light: #ffffff;
+    /* Tipografia */
+    --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-sans: "Jost", system-ui, -apple-system, sans-serif;
 
-    --font-InriaFigma: "Inria Serif", serif;
+    /* Paleta — Minimal / Quiet Sophistication (monocromática) */
+    --color-ink: #0a0a0a;       /* texto / preto suave */
+    --color-paper: #ffffff;     /* fundo principal */
+    --color-surface: #f6f5f3;   /* fundo alternativo subtil */
+    --color-muted: #9a9a9a;     /* texto secundário / cinza suave */
+    --color-line: #e6e4e0;      /* linhas hairline */
 
     --breakpoint-xs: 480px;
 }
@@ -17,16 +23,94 @@ html {
 }
 
 body {
-    @apply font-InriaFigma bg-white text-black;
+    @apply font-sans bg-paper text-ink;
+    font-weight: 300;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Títulos em serifa elegante (Cormorant), peso leve — o tamanho é que dá presença */
+h1, h2, h3, h4 {
+    @apply font-serif;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+}
+
 .dark body {
-    @apply bg-neutral-950 text-neutral-100;
+    @apply bg-ink text-paper;
 }
 
 button:hover {
     cursor: pointer;
+}
+
+/* ----- Componentes reutilizáveis do sistema de design ----- */
+
+/* Etiqueta pequena em maiúsculas com tracking largo (estilo editorial/arquitetura) */
+.eyebrow {
+    @apply font-sans uppercase text-xs text-muted;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+}
+
+/* Botão sólido minimalista (cantos retos, maiúsculas espaçadas) */
+.btn-primary {
+    @apply inline-flex items-center justify-center gap-3 bg-ink text-paper uppercase text-sm px-9 py-4 transition-all duration-300;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+}
+.btn-primary:hover {
+    @apply bg-muted;
+}
+
+/* Botão de contorno */
+.btn-outline {
+    @apply inline-flex items-center justify-center gap-3 border border-ink text-ink uppercase text-sm px-9 py-4 transition-all duration-300;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+}
+.btn-outline:hover {
+    @apply bg-ink text-paper;
+}
+
+/* Link de texto com seta e underline animado */
+.link-arrow {
+    @apply relative inline-flex items-center gap-2 uppercase text-sm text-ink transition-opacity duration-300;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+}
+.link-arrow::after {
+    content: "";
+    @apply absolute left-0 -bottom-1 h-px w-0 bg-ink transition-all duration-300;
+}
+.link-arrow:hover::after {
+    @apply w-full;
+}
+
+/* Transição suave entre páginas (fade + leve subida) */
+@keyframes routeFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.route-fade {
+    animation: routeFade 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .route-fade {
+        animation: none;
+    }
 }
 
 /* Menu mobile: fade-in + slide-down ao abrir (apenas abaixo do breakpoint md) */

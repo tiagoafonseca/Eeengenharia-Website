@@ -24,34 +24,40 @@ const NavBar = () => {
     }, []);
 
     const displayLang = currentLanguage.toUpperCase();
-    const closeMobileMenu = () => setIsVisible(false);
+
+    // Qualquer operação da navbar leva a página ao topo (mesmo sem mudança de rota)
+    const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    const handleNavClick = () => {
+        setIsVisible(false);
+        scrollTop();
+    };
 
     return (
         <nav
-            className={`bg-white dark:bg-neutral-900 flex justify-between items-center w-full mx-auto py-5 px-10 relative md:fixed md:top-0 md:left-0 md:z-50 ${
-                scrolled ? "shadow-md border-b-0" : "border-black dark:border-neutral-100 border-b-2"
+            className={`bg-paper dark:bg-neutral-900 flex justify-between items-center w-full mx-auto py-6 px-6 md:px-12 relative md:fixed md:top-0 md:left-0 md:z-50 transition-shadow duration-300 ${
+                scrolled ? "shadow-[0_1px_0_0_rgba(0,0,0,0.06)]" : "border-line dark:border-neutral-800 border-b"
             }`}
         >
             <div>
-                <NavLink to="/">
-                    <img src="/logo.webp" alt="Eeengenharia" className="h-15 md:pl-5" width="180" height="60" />
+                <NavLink to="/" onClick={handleNavClick}>
+                    <img src="/logo.webp" alt="Eeengenharia" className="h-10 md:h-12 w-auto" width="470" height="193" />
                 </NavLink>
             </div>
 
             <div
                 className={`mobile-menu ${
                     isVisible ? "is-open" : ""
-                } flex flex-col md:flex-row items-center absolute md:static top-full left-0 w-full md:w-auto bg-white dark:bg-neutral-900 md:bg-transparent md:dark:bg-transparent shadow-md md:shadow-none py-6 md:py-0 px-10 md:px-0 z-40`}
+                } flex flex-col md:flex-row items-center absolute md:static top-full left-0 w-full md:w-auto bg-paper dark:bg-neutral-900 md:bg-transparent md:dark:bg-transparent shadow-md md:shadow-none py-8 md:py-0 px-10 md:px-0 z-40`}
             >
-                <ul className="flex flex-col md:flex-row justify-center items-center w-full md:w-auto md:gap-[4vw] text-xl gap-8">
+                <ul className="flex flex-col md:flex-row justify-center items-center w-full md:w-auto md:gap-10 lg:gap-12 gap-8">
                     {NAV_ITEMS.map(({ to, labelKey }) => (
                         <li key={to}>
                             <NavLink
                                 to={to}
-                                onClick={closeMobileMenu}
+                                onClick={handleNavClick}
                                 className={({ isActive }) =>
-                                    `hover:text-gray-500 transition-colors ${
-                                        isActive ? "text-gray-500" : ""
+                                    `uppercase text-sm tracking-[0.18em] transition-colors duration-300 hover:text-muted ${
+                                        isActive ? "text-muted" : "text-ink dark:text-neutral-100"
                                     }`
                                 }
                             >
@@ -60,13 +66,13 @@ const NavBar = () => {
                         </li>
                     ))}
 
-                    <li>
+                    <li className="md:ml-2">
                         <FlyOutLink
                             currentLanguage={currentLanguage}
                             setCurrentLanguage={setCurrentLanguage}
                             FlyOutContent={LanguagesFlyOut}
                         >
-                            {displayLang}
+                            <span className="text-sm tracking-[0.18em]">{displayLang}</span>
                             <GiWorld />
                         </FlyOutLink>
                     </li>
@@ -82,6 +88,7 @@ const NavBar = () => {
                 <button
                     type="button"
                     onClick={() => setIsVisible((v) => !v)}
+                    onMouseEnter={() => setIsVisible(true)}
                     aria-label={isVisible ? "Fechar menu" : "Abrir menu"}
                     aria-expanded={isVisible}
                 >

@@ -9,7 +9,6 @@ const Portfollium = () => {
     const [activeCategory, setActiveCategory] = useState("all");
     const [lightboxIndex, setLightboxIndex] = useState(null);
 
-    // Projetos filtrados pela categoria ativa, já com o rótulo traduzido.
     const filtered = useMemo(() => {
         const list =
             activeCategory === "all"
@@ -20,53 +19,67 @@ const Portfollium = () => {
 
     const changeCategory = (id) => {
         setActiveCategory(id);
-        setLightboxIndex(null); // fecha o lightbox se a filtragem mudar
+        setLightboxIndex(null);
     };
 
     return (
         <main>
-            <div className="flex flex-col justify-center items-center mt-24 md:mt-30 mb-10 px-6 md:p-10">
-                <h1 className="font-bold text-3xl md:text-[40px] mb-10 text-center">{t("portfolioTitle")}</h1>
+            {/* Cabeçalho */}
+            <section className="max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-44 pb-12 md:pb-16 text-center">
+                <p className="eyebrow mb-6">{t("ebProjects")}</p>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl">{t("portfolio")}</h1>
+            </section>
 
-                <div className="flex flex-row flex-wrap justify-center items-center gap-4 md:gap-x-15 text-lg md:text-[25px] mb-10">
-                    {PROJECT_CATEGORIES.map(({ id, labelKey }) => (
-                        <div key={id} className="group inline-block relative">
-                            <button onClick={() => changeCategory(id)}>{t(labelKey)}</button>
-                            <span
-                                className={`absolute left-0 -bottom-1 h-[2px] bg-black dark:bg-neutral-100 transition-all duration-300 ${
-                                    activeCategory === id ? "w-full" : "w-0 group-hover:w-full"
-                                }`}
-                            />
-                        </div>
-                    ))}
-                </div>
+            {/* Filtros */}
+            <div className="flex flex-wrap justify-center gap-6 md:gap-10 pb-12 md:pb-16">
+                {PROJECT_CATEGORIES.map(({ id, labelKey }) => (
+                    <button
+                        key={id}
+                        onClick={() => changeCategory(id)}
+                        className={`uppercase text-sm tracking-[0.18em] pb-1 border-b transition-colors duration-300 ${
+                            activeCategory === id
+                                ? "border-ink text-ink"
+                                : "border-transparent text-muted hover:text-ink"
+                        }`}
+                    >
+                        {t(labelKey)}
+                    </button>
+                ))}
+            </div>
 
+            {/* Galeria */}
+            <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24 md:pb-32">
                 {filtered.length === 0 ? (
-                    <p className="text-lg text-gray-500 py-20">{t("noProjects")}</p>
+                    <p className="text-center text-muted py-20">{t("noProjects")}</p>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-6xl">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                         {filtered.map((project, i) => (
                             <Reveal key={project.id} delay={(i % 3) * 100}>
                                 <button
                                     type="button"
                                     onClick={() => setLightboxIndex(i)}
                                     aria-label={`${project.label} — ${t("portfolio")}`}
-                                    className="portfolio-item group block w-full overflow-hidden cursor-pointer"
+                                    className="group relative block w-full overflow-hidden cursor-pointer"
                                 >
                                     <img
                                         src={project.image}
                                         alt={project.label}
                                         width="400"
                                         height="300"
-                                        loading="lazy" decoding="async"
-                                        className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="w-full h-72 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
+                                    <span className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors duration-500" />
+                                    <span className="absolute left-5 bottom-5 text-paper text-sm uppercase tracking-[0.18em] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                                        {project.label}
+                                    </span>
                                 </button>
                             </Reveal>
                         ))}
                     </div>
                 )}
-            </div>
+            </section>
 
             {lightboxIndex !== null && (
                 <Lightbox

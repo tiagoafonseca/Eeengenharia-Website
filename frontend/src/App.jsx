@@ -24,12 +24,15 @@ function ScrollToTop() {
 }
 
 function App() {
+    const location = useLocation();
+
     return (
         <div>
             <NavBar />
             <ScrollToTop />
             <Suspense fallback={<PageLoader />}>
-                <Routes>
+                <div key={location.pathname} className="route-fade">
+                    <Routes location={location}>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/sobrenos" element={<AboutUs />} />
                     <Route path="/servicos" element={<Services />} />
@@ -39,7 +42,8 @@ function App() {
                     <Route path="/cookies" element={<LegalPage titleKey="cookiePolicy" introKey="cookieIntro" />} />
                     <Route path="/termos" element={<LegalPage titleKey="terms" introKey="termsIntro" />} />
                     <Route path="*" element={<NotFound />} />
-                </Routes>
+                    </Routes>
+                </div>
             </Suspense>
             <Footer />
         </div>

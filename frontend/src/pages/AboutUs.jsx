@@ -3,60 +3,100 @@ import ContactForm from "../components/sections/ContactForm.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import { TEAM } from "../data/team.js";
 
-const VALUES = ["Exclusividade", "Transparência", "Inovação", "Qualidade"];
+const VALUE_KEYS = [
+    { key: "valueExclusivity",  descKey: "valueExclusivityDesc" },
+    { key: "valueTransparency", descKey: "valueTransparencyDesc" },
+    { key: "valueInnovation",   descKey: "valueInnovationDesc" },
+    { key: "valueQuality",      descKey: "valueQualityDesc" },
+];
 
 const AboutUs = () => {
     const { t } = useTranslation();
 
     return (
         <main>
-            <div className="text-black dark:text-neutral-100">
-                <div className="flex flex-col justify-center items-center text-black dark:text-neutral-100 pb-12 md:pb-20 mt-24 md:mt-30 mb-10 px-6 md:p-10">
-                    <h1 className="font-bold text-3xl md:text-[40px] text-center">{t("ourHistory")}</h1>
-                    <div className="flex flex-col lg:flex-row justify-evenly items-center gap-10 lg:gap-x-20 pt-12 md:pt-20 w-full">
-                        <Reveal className="text-lg md:text-xl font-normal lg:pt-10 lg:w-1/2">
-                            <p className="p-2">{t("historyP1")}</p>
-                            <p className="p-2">{t("historyP2")}</p>
-                            <p className="p-2">{t("historyP3")}</p>
-                            <p className="font-bold p-2">{t("ourValues")}</p>
-                            <ul className="list-disc list-inside pl-5">
-                                {VALUES.map((v) => <li key={v}>{v}</li>)}
+            {/* História */}
+            <section className="max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-44 pb-24 md:pb-32">
+                <Reveal className="max-w-3xl mb-16 md:mb-20">
+                    <p className="eyebrow mb-6">{t("ebCompany")}</p>
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl">{t("ourHistory")}</h1>
+                </Reveal>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                    <Reveal className="space-y-5 text-lg text-ink/70 font-light">
+                        <p>{t("historyP1")}</p>
+                        <p>{t("historyP2")}</p>
+                        <p>{t("historyP3")}</p>
+
+                        <div className="pt-6">
+                            <p className="eyebrow mb-5">{t("ourValues")}</p>
+                            <ul className="divide-y divide-line border-t border-line">
+                                {VALUE_KEYS.map(({ key, descKey }) => (
+                                    <li key={key} className="py-4">
+                                        <p className="font-serif text-2xl text-ink mb-1">{t(key)}</p>
+                                        <p className="text-sm text-ink/60 font-light leading-relaxed">{t(descKey)}</p>
+                                    </li>
+                                ))}
                             </ul>
-                            <p className="p-2">{t("historyP4")}</p>
-                        </Reveal>
+                        </div>
+                    </Reveal>
 
-                        <Reveal delay={150} className="lg:w-1/2 flex justify-center">
-                            <img className="w-full max-w-[1000px] h-auto" src="/aboutUs-img1.webp" alt={t("ourHistory")} width="1000" height="600" loading="lazy" decoding="async" />
-                        </Reveal>
-                    </div>
+                    <Reveal delay={150}>
+                        <img
+                            className="w-full h-auto object-cover lg:sticky lg:top-28"
+                            src="/aboutUs-img1.webp"
+                            alt={t("ourHistory")}
+                            width="1000"
+                            height="600"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </Reveal>
                 </div>
+            </section>
 
-                <div className="bg-black text-white flex flex-col justify-center items-center px-6 py-12 md:p-10 w-auto">
-                    <h2 className="font-bold text-3xl md:text-[40px] text-center">{t("ourTeam")}</h2>
+            {/* Equipa */}
+            <section className="bg-surface">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
+                    <Reveal className="text-center mb-16 md:mb-20">
+                        <h2 className="text-4xl md:text-5xl">{t("ourTeam")}</h2>
+                    </Reveal>
 
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-x-50 w-auto pt-12 md:pt-20">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
                         {TEAM.map((member, i) => (
-                            <Reveal key={i} delay={i * 100} className="flex flex-col justify-center items-center">
-                                <img className="pb-5" src={member.image} alt={member.name} width="120" height="120" loading="lazy" decoding="async" />
-                                <h3 className="text-xl md:text-[25px] font-bold text-center">{member.name}</h3>
-                                <p className="text-center">{member.role}</p>
+                            <Reveal key={i} delay={i * 100} className="text-center">
+                                <div className="overflow-hidden mb-5">
+                                    <img
+                                        className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                        src={member.image}
+                                        alt={member.name}
+                                        width="300"
+                                        height="300"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </div>
+                                <h3 className="font-serif text-2xl">{member.name}</h3>
+                                <p className="text-sm uppercase tracking-[0.15em] text-muted mt-1">{member.role}</p>
                             </Reveal>
                         ))}
                     </div>
 
-                    <div className="my-12 md:m-25 px-2 md:px-10 text-lg md:text-xl max-w-4xl">
-                        <p className="pb-5">{t("teamP1")}</p>
-                        <p className="pb-2">{t("teamP2")}</p>
-                    </div>
+                    <Reveal className="max-w-3xl mx-auto text-center mt-16 md:mt-20 space-y-4 text-lg text-ink/70 font-light">
+                        <p>{t("teamP1")}</p>
+                        <p>{t("teamP2")}</p>
+                    </Reveal>
                 </div>
+            </section>
 
-                <div className="bg-white dark:bg-neutral-950 pt-12 md:pt-20 text-black dark:text-neutral-100 mb-16 md:mb-25">
-                    <div className="flex justify-center mb-10">
-                        <h2 className="font-bold text-3xl md:text-[40px] text-center px-6">{t("contactUs")}</h2>
-                    </div>
-                    <ContactForm />
-                </div>
-            </div>
+            {/* Contacto */}
+            <section className="max-w-5xl mx-auto px-6 md:px-12 py-24 md:py-32">
+                <Reveal className="text-center mb-12 md:mb-16">
+                    <p className="eyebrow mb-6">{t("ebContact")}</p>
+                    <h2 className="text-4xl md:text-5xl">{t("contactUs")}</h2>
+                </Reveal>
+                <ContactForm />
+            </section>
         </main>
     );
 };

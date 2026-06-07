@@ -6,17 +6,11 @@ const NotFound = () => {
 
     return (
         <main>
-            <div className="min-h-[60vh] flex flex-col justify-center items-center text-center mt-24 md:mt-30 mb-16 px-6">
-                <p className="font-bold text-7xl md:text-9xl leading-none">404</p>
-                <h1 className="font-bold text-2xl md:text-3xl mt-6">{t("notFoundTitle")}</h1>
-                <p className="text-lg md:text-xl mt-4 text-gray-600 dark:text-neutral-400">{t("notFoundDesc")}</p>
-
-                <Link
-                    to="/"
-                    className="mt-10 bg-black dark:bg-white px-6 py-4 text-white dark:text-black text-lg hover:bg-gray-400 dark:hover:bg-neutral-300 transition-all duration-300 ease-linear"
-                >
-                    {t("backHome")}
-                </Link>
+            <div className="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 pt-32 pb-20">
+                <p className="font-serif text-8xl md:text-9xl leading-none text-ink">404</p>
+                <h1 className="text-3xl md:text-4xl mt-6">{t("notFoundTitle")}</h1>
+                <p className="text-lg text-ink/70 font-light mt-4 max-w-md">{t("notFoundDesc")}</p>
+                <Link to="/" className="btn-primary mt-10">{t("backHome")}</Link>
             </div>
         </main>
     );
