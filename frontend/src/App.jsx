@@ -19,8 +19,24 @@ function ScrollToTop() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        if (window.gtag && localStorage.getItem("cookie_consent") === "accepted") {
+            window.gtag('event', 'page_view', { page_path: pathname });
+        }
     }, [pathname]);
 
+    return null;
+}
+
+function RestoreConsent() {
+    useEffect(() => {
+        if (localStorage.getItem("cookie_consent") === "accepted" && window.gtag) {
+            window.gtag('consent', 'update', {
+                analytics_storage: "granted",
+                ad_storage: "denied",
+            });
+            window.gtag('event', 'page_view');
+        }
+    }, []);
     return null;
 }
 
@@ -31,6 +47,7 @@ function App() {
         <div>
             <NavBar />
             <ScrollToTop />
+            <RestoreConsent />
             <Suspense fallback={<PageLoader />}>
                 <div key={location.pathname} className="route-fade">
                     <Routes location={location}>

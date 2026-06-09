@@ -53,7 +53,7 @@ const ObraSelect = ({ value, onChange, options, placeholder, disabled, hasError 
                 disabled={disabled}
                 aria-haspopup="listbox"
                 aria-expanded={open}
-                className={`w-full flex items-center justify-between border-b py-3 transition-colors duration-300 focus:outline-none disabled:opacity-50 cursor-pointer ${
+                className={`w-full flex items-center justify-between border-b h-12 transition-colors duration-300 focus:outline-none disabled:opacity-50 cursor-pointer ${
                     hasError ? "border-red-400" : "border-line focus:border-ink"
                 }`}
             >
@@ -270,7 +270,7 @@ const ContactForm = ({ onSuccess }) => {
             {/* Honeypot anti-spam */}
             <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" onChange={handleChange} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 items-start">
 
                 {/* Nome */}
                 <div>
@@ -306,7 +306,7 @@ const ContactForm = ({ onSuccess }) => {
 
                 {/* Telemóvel com indicativo pesquisável */}
                 <div>
-                    <div className={`flex items-center border-b py-3 transition-colors duration-300 ${
+                    <div className={`flex items-center border-b h-12 transition-colors duration-300 ${
                         errors.telemovel ? "border-red-400" : "border-line focus-within:border-ink"
                     }`}>
                         <CountryCodeSelect value={countryCode} onChange={setCountryCode} disabled={sending} />

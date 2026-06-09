@@ -19,6 +19,15 @@ const CookieBanner = () => {
 
     const dismiss = (choice) => {
         localStorage.setItem(STORAGE_KEY, choice);
+        if (window.gtag) {
+            window.gtag('consent', 'update', {
+                analytics_storage: choice === "accepted" ? "granted" : "denied",
+                ad_storage: "denied",
+            });
+            if (choice === "accepted") {
+                window.gtag('event', 'page_view');
+            }
+        }
         setHiding(true);
         setTimeout(() => setVisible(false), 400);
     };

@@ -77,6 +77,22 @@
          O hero usa background-image, que o browser descobre tarde; o preload adianta-a. -->
     <link rel="preload" as="image" href="/splide-img1.webp" fetchpriority="high" />
 
+    <!-- Google Analytics 4 — Consent Mode v2
+         O tracking só ativa após o utilizador aceitar cookies no banner.
+         Por defeito analytics_storage fica 'denied' (GDPR compliant). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E29W5L68K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        wait_for_update: 500
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-1E29W5L68K', { send_page_view: false });
+    </script>
+
     <!-- Fonts: Cormorant Garamond (títulos) + Jost (corpo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
