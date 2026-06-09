@@ -91,6 +91,12 @@ button:hover {
     @apply w-full;
 }
 
+/* Cookie banner — desliza de baixo para cima */
+@keyframes cookieSlideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+}
+
 /* Transição suave entre páginas (fade + leve subida) */
 @keyframes routeFade {
     from {

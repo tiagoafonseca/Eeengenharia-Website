@@ -3,6 +3,7 @@ import { useEffect, lazy, Suspense } from "react";
 import NavBar from "./components/layout/NavBar.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import PageLoader from "./components/ui/PageLoader.jsx";
+import CookieBanner from "./components/ui/CookieBanner.jsx";
 
 // Páginas carregadas sob demanda (code splitting) — cada uma vira um chunk próprio.
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
@@ -46,6 +47,7 @@ function App() {
                 </div>
             </Suspense>
             <Footer />
+            <CookieBanner />
         </div>
     );
 }
