@@ -31,16 +31,17 @@ const Footer = () => {
                             <Link className={linkClass} to="/servicos#moradias">{t("construction")}</Link>
                             <Link className={linkClass} to="/servicos#remodelacoes">{t("renovations")}</Link>
                             <Link className={linkClass} to="/servicos#projetos">{t("projectsLicenses")}</Link>
+                            <Link className={linkClass} to="/faq">FAQ</Link>
                         </div>
                     </div>
 
                     <div className="col-span-2 lg:col-span-1">
                         <h2 className={colTitle}>{t("contacts")}</h2>
                         <div className="flex flex-col gap-4 text-paper/70 font-light">
-                            <a href="mailto:geral@eeengenharia.pt" className="flex items-center gap-3 hover:text-paper transition-colors">
+                            <a href="mailto:geral@eeengenharia.pt" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "email" })} className="flex items-center gap-3 hover:text-paper transition-colors">
                                 <IoMailOutline className="shrink-0" /> geral@eeengenharia.pt
                             </a>
-                            <a href="tel:+351913928625" className="flex items-center gap-3 hover:text-paper transition-colors">
+                            <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="flex items-center gap-3 hover:text-paper transition-colors">
                                 <IoCall className="shrink-0" /> +351 913 928 625
                             </a>
                             <div className="flex items-center gap-5 pt-2">

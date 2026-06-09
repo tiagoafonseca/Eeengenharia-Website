@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Reveal from "../components/ui/Reveal.jsx";
 import Modal from "../components/sections/Modal.jsx";
+import HowWeWork from "../components/sections/HowWeWork.jsx";
 import { SERVICE_SECTIONS } from "../data/services.js";
 
 const Services = () => {
@@ -70,13 +71,15 @@ const Services = () => {
                 );
             })}
 
+            <HowWeWork />
+
             {/* CTA final */}
             <section className="bg-surface">
                 <div className="max-w-4xl mx-auto px-6 md:px-12 py-24 md:py-32 text-center">
                     <Reveal>
                         <p className="eyebrow mb-6">{t("ebContact")}</p>
                         <h2 className="text-4xl md:text-5xl lg:text-6xl mb-10">{t("ctaTitle")}</h2>
-                        <button onClick={() => setShowModal(true)} className="btn-primary">
+                        <button onClick={() => { setShowModal(true); window.gtag?.("event", "cta_click", { event_category: "engagement", event_label: "services_cta" }); }} className="btn-primary">
                             {t("requestBudget")}
                         </button>
                     </Reveal>

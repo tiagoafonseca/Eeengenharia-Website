@@ -13,10 +13,10 @@ const Contacts = () => {
                     <p className="eyebrow mb-6">{t("ebContact")}</p>
                     <h1 className="text-5xl md:text-6xl lg:text-7xl mb-8">{t("contactUs")}</h1>
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-10 text-ink/70 font-light">
-                        <a href="mailto:geral@eeengenharia.pt" className="inline-flex items-center gap-2 hover:text-ink transition-colors">
+                        <a href="mailto:geral@eeengenharia.pt" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "email" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
                             <IoMailOutline /> geral@eeengenharia.pt
                         </a>
-                        <a href="tel:+351913928625" className="inline-flex items-center gap-2 hover:text-ink transition-colors">
+                        <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
                             <IoCallOutline /> +351 913 928 625
                         </a>
                     </div>

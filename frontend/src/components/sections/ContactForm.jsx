@@ -15,12 +15,19 @@ const COUNTRY_CODES = [
     { code: "+352", flag: "🇱🇺", name: "Luxemburgo" },
     { code: "+244", flag: "🇦🇴", name: "Angola" },
     { code: "+258", flag: "🇲🇿", name: "Moçambique" },
-    { code: "other", flag: "🌐", name: "Outro" },
+    { code: "other", flag: null, name: "Outro" },
 ];
 
 const validateEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
 const validatePhone = (v) => v.replace(/\D/g, "").length >= 8;
 const validateDesc  = (v) => v.trim().split(/\s+/).filter(Boolean).length >= 3;
+
+const GlobeIcon = ({ className = "h-4 w-4" }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9M3 12h18" strokeLinecap="round" />
+    </svg>
+);
 
 const Chevron = () => (
     <svg className="h-3.5 w-3.5 text-muted shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -124,8 +131,8 @@ const CountryCodeSelect = ({ value, onChange, disabled }) => {
                 aria-expanded={open}
                 className="flex items-center gap-1.5 text-sm text-ink focus:outline-none disabled:opacity-50 cursor-pointer"
             >
-                <span>{selected.flag}</span>
-                <span>{selected.code}</span>
+                {selected.flag ? <span>{selected.flag}</span> : <GlobeIcon />}
+                <span>{selected.code !== "other" ? selected.code : ""}</span>
                 <Chevron />
             </button>
 
@@ -160,7 +167,7 @@ const CountryCodeSelect = ({ value, onChange, disabled }) => {
                                         : "text-ink/70 hover:text-ink hover:bg-surface"
                                 }`}
                             >
-                                <span>{flag}</span>
+                                {flag ? <span>{flag}</span> : <GlobeIcon className="h-4 w-4 shrink-0 text-ink" />}
                                 <span className="flex-1">{name}</span>
                                 <span className="text-muted text-xs">{code}</span>
                             </li>
@@ -245,6 +252,7 @@ const ContactForm = ({ onSuccess }) => {
                 setForm(EMPTY_FORM);
                 setErrors({});
                 setTouched({});
+                window.gtag?.("event", "form_submit", { event_category: "contact", event_label: "orcamento" });
                 onSuccess?.();
             } else {
                 setStatus("error");

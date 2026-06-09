@@ -89,7 +89,7 @@ const Portfollium = () => {
                     <Reveal>
                         <p className="eyebrow mb-6">{t("ebContact")}</p>
                         <h2 className="text-4xl md:text-5xl lg:text-6xl mb-10">{t("ctaTitle")}</h2>
-                        <button onClick={() => setShowModal(true)} className="btn-primary">
+                        <button onClick={() => { setShowModal(true); window.gtag?.("event", "cta_click", { event_category: "engagement", event_label: "portfolio_cta" }); }} className="btn-primary">
                             {t("requestBudget")}
                         </button>
                     </Reveal>

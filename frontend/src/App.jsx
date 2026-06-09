@@ -4,6 +4,7 @@ import NavBar from "./components/layout/NavBar.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import PageLoader from "./components/ui/PageLoader.jsx";
 import CookieBanner from "./components/ui/CookieBanner.jsx";
+import ScrollToTopButton from "./components/ui/ScrollToTopButton.jsx";
 
 // Páginas carregadas sob demanda (code splitting) — cada uma vira um chunk próprio.
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
@@ -12,6 +13,7 @@ const Services = lazy(() => import("./pages/Services.jsx"));
 const Portfollium = lazy(() => import("./pages/Portfollium.jsx"));
 const Contacts = lazy(() => import("./pages/Contacts.jsx"));
 const LegalPage = lazy(() => import("./pages/LegalPage.jsx"));
+const FAQ = lazy(() => import("./pages/FAQ.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 
 function ScrollToTop() {
@@ -59,12 +61,14 @@ function App() {
                     <Route path="/privacidade" element={<LegalPage titleKey="privacyPolicy" introKey="privacyIntro" />} />
                     <Route path="/cookies" element={<LegalPage titleKey="cookiePolicy" introKey="cookieIntro" />} />
                     <Route path="/termos" element={<LegalPage titleKey="terms" introKey="termsIntro" />} />
+                    <Route path="/faq" element={<FAQ />} />
                     <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
             </Suspense>
             <Footer />
             <CookieBanner />
+            <ScrollToTopButton />
         </div>
     );
 }
