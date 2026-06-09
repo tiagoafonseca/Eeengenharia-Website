@@ -62,7 +62,7 @@ export default function Carousel() {
                     <p className="uppercase text-xs tracking-[0.28em] text-white/80 mb-6">
                         {t('heroEyebrow')}
                     </p>
-                    <h1 className="font-serif font-medium text-white text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] max-w-4xl">
+                    <h1 className="font-serif font-medium text-white text-4xl md:text-5xl lg:text-6xl leading-[1.05] max-w-4xl">
                         {t('heroTitle')}
                     </h1>
                     <p className="text-white/85 text-lg md:text-xl font-light mt-7 max-w-xl">
