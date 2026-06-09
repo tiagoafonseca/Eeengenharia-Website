@@ -73,6 +73,21 @@ const Services = () => {
 
             <HowWeWork />
 
+            {/* FAQ teaser */}
+            <section className="border-t border-line">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 flex flex-col md:flex-row md:items-center justify-between gap-8">
+                    <Reveal>
+                        <p className="eyebrow mb-4">FAQ</p>
+                        <h2 className="text-3xl md:text-4xl">{t("faqBannerText")}</h2>
+                    </Reveal>
+                    <Reveal delay={100} className="shrink-0">
+                        <Link to="/faq" className="btn-outline">
+                            {t("faqBannerBtn")}
+                        </Link>
+                    </Reveal>
+                </div>
+            </section>
+
             {/* CTA final */}
             <section className="bg-surface">
                 <div className="max-w-4xl mx-auto px-6 md:px-12 py-24 md:py-32 text-center">
