@@ -23,6 +23,15 @@ const NavBar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (!isVisible) return;
+        const handleOutside = (e) => {
+            if (!e.target.closest("nav")) setIsVisible(false);
+        };
+        document.addEventListener("pointerdown", handleOutside);
+        return () => document.removeEventListener("pointerdown", handleOutside);
+    }, [isVisible]);
+
     const displayLang = currentLanguage.toUpperCase();
 
     // Qualquer operação da navbar leva a página ao topo (mesmo sem mudança de rota)

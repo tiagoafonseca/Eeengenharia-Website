@@ -12,14 +12,9 @@ const Footer = () => {
     return (
         <footer className="bg-ink text-paper">
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 lg:gap-12">
                     <div className="col-span-2 lg:col-span-1">
-                        <img src="/logo-footer.webp" alt="Eeengenharia" width="160" height="50" loading="lazy" decoding="async" className="h-10 w-auto mb-8" />
-                        <div className="flex flex-col gap-3">
-                            <Link to="/privacidade" className={linkClass}>{t("privacyPolicy")}</Link>
-                            <Link to="/cookies" className={linkClass}>{t("cookiePolicy")}</Link>
-                            <Link to="/termos" className={linkClass}>{t("terms")}</Link>
-                        </div>
+                        <img src="/logo-footer.webp" alt="Eeengenharia" width="160" height="50" loading="lazy" decoding="async" className="h-10 w-auto" />
                     </div>
 
                     <div>
@@ -39,7 +34,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="col-span-2 lg:col-span-1">
                         <h2 className={colTitle}>{t("contacts")}</h2>
                         <div className="flex flex-col gap-4 text-paper/70 font-light">
                             <a href="mailto:geral@eeengenharia.pt" className="flex items-center gap-3 hover:text-paper transition-colors">
@@ -60,10 +55,15 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-paper/15 mt-14 pt-8 text-center">
-                    <p className="text-xs tracking-[0.1em] text-paper/50">
+                <div className="border-t border-paper/15 mt-14 pt-8 flex flex-col-reverse md:flex-row items-center justify-between gap-6">
+                    <p className="text-xs tracking-[0.1em] text-paper/50 text-center md:text-left">
                         © Eeengenharia 2025 · {t("rightsReserved")} · {t("buildBy")}
                     </p>
+                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                        <Link to="/privacidade" className="text-xs tracking-[0.1em] text-paper/50 hover:text-paper transition-colors">{t("privacyPolicy")}</Link>
+                        <Link to="/cookies" className="text-xs tracking-[0.1em] text-paper/50 hover:text-paper transition-colors">{t("cookiePolicy")}</Link>
+                        <Link to="/termos" className="text-xs tracking-[0.1em] text-paper/50 hover:text-paper transition-colors">{t("terms")}</Link>
+                    </div>
                 </div>
             </div>
         </footer>

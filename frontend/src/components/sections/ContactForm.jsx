@@ -114,18 +114,30 @@ const ContactForm = ({ onSuccess }) => {
                     autoComplete="tel"
                     disabled={sending}
                 />
-                <select
-                    name="tipoObra"
-                    value={form.tipoObra}
-                    onChange={handleChange}
-                    className={`${fieldClass} ${form.tipoObra ? "text-ink" : "text-muted"}`}
-                    disabled={sending}
-                >
-                    <option value="">{t("formType")}</option>
-                    {obraOptions.map(({ value, labelKey }) => (
-                        <option key={value} value={value} className="text-ink">{t(labelKey)}</option>
-                    ))}
-                </select>
+                <div className="relative">
+                    <select
+                        name="tipoObra"
+                        value={form.tipoObra}
+                        onChange={handleChange}
+                        className={`${fieldClass} appearance-none cursor-pointer pr-8 ${form.tipoObra ? "text-ink" : "text-muted"}`}
+                        disabled={sending}
+                    >
+                        <option value="">{t("formType")}</option>
+                        {obraOptions.map(({ value, labelKey }) => (
+                            <option key={value} value={value} className="text-ink">{t(labelKey)}</option>
+                        ))}
+                    </select>
+                    <svg
+                        className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-muted"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        aria-hidden="true"
+                    >
+                        <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </div>
 
                 <textarea
                     name="descricao"

@@ -1,12 +1,26 @@
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import ContactForm from "./ContactForm.jsx";
 
 const Modal = ({ isVisible, onClose }) => {
     const { t } = useTranslation();
+
+    useEffect(() => {
+        if (!isVisible) return;
+        const onKey = (e) => { if (e.key === "Escape") onClose(); };
+        window.addEventListener("keydown", onKey);
+        document.body.style.overflow = "hidden";
+        return () => {
+            window.removeEventListener("keydown", onKey);
+            document.body.style.overflow = "";
+        };
+    }, [isVisible, onClose]);
+
     if (!isVisible) return null;
 
-    return (
+    return createPortal(
         <div
             className="fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm flex justify-center items-center p-4"
             role="dialog"
@@ -33,7 +47,8 @@ const Modal = ({ isVisible, onClose }) => {
 
                 <ContactForm onSuccess={() => {}} />
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 

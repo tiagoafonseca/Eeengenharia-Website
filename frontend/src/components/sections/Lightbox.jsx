@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { IoClose } from "react-icons/io5";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
@@ -41,7 +42,7 @@ const Lightbox = ({ items, index, onClose, onNavigate }) => {
     const item = items[index];
     if (!item) return null;
 
-    return (
+    return createPortal(
         <div
             className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4"
             role="dialog"
@@ -97,7 +98,8 @@ const Lightbox = ({ items, index, onClose, onNavigate }) => {
                     <BsChevronRight />
                 </button>
             )}
-        </div>
+        </div>,
+        document.body
     );
 };
 
