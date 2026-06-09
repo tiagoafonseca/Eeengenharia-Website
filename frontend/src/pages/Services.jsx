@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Reveal from "../components/ui/Reveal.jsx";
+import Modal from "../components/sections/Modal.jsx";
 import { SERVICE_SECTIONS } from "../data/services.js";
 
 const Services = () => {
     const { t } = useTranslation();
     const [active, setActive] = useState(SERVICE_SECTIONS[0].id);
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <main>
@@ -69,14 +71,19 @@ const Services = () => {
             })}
 
             {/* CTA final */}
-            <section className="border-t border-line">
-                <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-28 text-center">
+            <section className="bg-surface">
+                <div className="max-w-4xl mx-auto px-6 md:px-12 py-24 md:py-32 text-center">
                     <Reveal>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl mb-10">{t("ctaTitle")}</h2>
-                        <Link to="/contactos" className="btn-primary">{t("requestBudget")}</Link>
+                        <p className="eyebrow mb-6">{t("ebContact")}</p>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl mb-10">{t("ctaTitle")}</h2>
+                        <button onClick={() => setShowModal(true)} className="btn-primary">
+                            {t("requestBudget")}
+                        </button>
                     </Reveal>
                 </div>
             </section>
+
+            <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
         </main>
     );
 };

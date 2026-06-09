@@ -2,12 +2,14 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import Reveal from "../components/ui/Reveal.jsx";
 import Lightbox from "../components/sections/Lightbox.jsx";
+import Modal from "../components/sections/Modal.jsx";
 import { PROJECTS, PROJECT_CATEGORIES, CATEGORY_LABELS } from "../data/projects.js";
 
 const Portfollium = () => {
     const { t } = useTranslation();
     const [activeCategory, setActiveCategory] = useState("all");
     const [lightboxIndex, setLightboxIndex] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const filtered = useMemo(() => {
         const list =
@@ -81,6 +83,19 @@ const Portfollium = () => {
                 )}
             </section>
 
+            {/* CTA */}
+            <section className="bg-surface">
+                <div className="max-w-4xl mx-auto px-6 md:px-12 py-24 md:py-32 text-center">
+                    <Reveal>
+                        <p className="eyebrow mb-6">{t("ebContact")}</p>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl mb-10">{t("ctaTitle")}</h2>
+                        <button onClick={() => setShowModal(true)} className="btn-primary">
+                            {t("requestBudget")}
+                        </button>
+                    </Reveal>
+                </div>
+            </section>
+
             {lightboxIndex !== null && (
                 <Lightbox
                     items={filtered}
@@ -89,6 +104,7 @@ const Portfollium = () => {
                     onNavigate={setLightboxIndex}
                 />
             )}
+            <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
         </main>
     );
 };
