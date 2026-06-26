@@ -24,7 +24,7 @@ const FlyOutLink = ({ children, FlyOutContent, currentLanguage, setCurrentLangua
         >
             <button
                 type="button"
-                className="flex flex-row items-center uppercase text-ink dark:text-neutral-100 gap-x-2 hover:text-muted transition-colors duration-300"
+                className="font-sans font-light flex flex-row items-center text-ink dark:text-neutral-100 gap-x-2 hover:text-muted transition-colors duration-300"
             >
                 {children}
             </button>

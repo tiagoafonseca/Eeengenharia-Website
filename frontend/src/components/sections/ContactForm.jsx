@@ -64,7 +64,7 @@ const ObraSelect = ({ value, onChange, options, placeholder, disabled, hasError 
                     hasError ? "border-red-400" : "border-line focus:border-ink"
                 }`}
             >
-                <span className={`text-sm ${selected ? "text-ink" : "text-muted"}`}>
+                <span className={selected ? "text-ink" : "text-muted"}>
                     {selected ? selected.label : placeholder}
                 </span>
                 <Chevron />
@@ -79,7 +79,7 @@ const ObraSelect = ({ value, onChange, options, placeholder, disabled, hasError 
                                 role="option"
                                 aria-selected={val === value}
                                 onClick={() => select(val)}
-                                className={`flex items-center justify-between px-4 py-3 text-sm cursor-pointer transition-colors duration-150 ${
+                                className={`flex items-center justify-between px-4 py-3 cursor-pointer transition-colors duration-150 ${
                                     val === value
                                         ? "text-ink bg-surface"
                                         : "text-ink/70 hover:text-ink hover:bg-surface"

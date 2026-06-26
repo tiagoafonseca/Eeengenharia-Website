@@ -19,10 +19,10 @@ export default function LanguagesFlyOut({currentLanguage, setCurrentLanguage}) {
     const [isHover, setIsHover] = useState(null);
 
     return (
-        <div className="w-[110px] text-[14px]">
+        <div className="w-[110px]">
             <div className="flex flex-col justify-center items-center gap-y-1 py-3">
                 {languages
-                    .filter((lang) => lang.code !== currentLanguage) // só mostra as que não estão ativas
+                    .filter((lang) => lang.code !== currentLanguage)
                     .map((lang) => (
                         <div key={lang.code} className="group inline-block relative w-full text-center">
                             <button
@@ -30,7 +30,7 @@ export default function LanguagesFlyOut({currentLanguage, setCurrentLanguage}) {
                                 onMouseLeave={() => setIsHover(null)}
                                 id={lang.code}
                                 onClick={() => {setCurrentLanguage(lang.code); changeLanguage(lang.code); window.scrollTo({ top: 0, behavior: "smooth" })}}
-                                className="flex flex-row justify-center items-center gap-x-2 w-full py-2 uppercase tracking-[0.15em] hover:text-muted transition-colors"
+                                className="font-sans font-light flex flex-row justify-center items-center gap-x-2 w-full py-2 text-sm hover:text-muted transition-colors"
                             >
                                 {lang.lang} <GiWorld/>
                             </button>

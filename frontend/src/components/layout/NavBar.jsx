@@ -81,7 +81,7 @@ const NavBar = () => {
                             setCurrentLanguage={setCurrentLanguage}
                             FlyOutContent={LanguagesFlyOut}
                         >
-                            <span className="text-sm tracking-[0.18em]">{displayLang}</span>
+                            <span className="text-sm font-light">{displayLang}</span>
                             <GiWorld />
                         </FlyOutLink>
                     </li>
