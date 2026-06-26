@@ -58,9 +58,9 @@ function App() {
                     <Route path="/servicos" element={<Services />} />
                     <Route path="/portfolio" element={<Portfollium />} />
                     <Route path="/contactos" element={<Contacts />} />
-                    <Route path="/privacidade" element={<LegalPage titleKey="privacyPolicy" introKey="privacyIntro" />} />
-                    <Route path="/cookies" element={<LegalPage titleKey="cookiePolicy" introKey="cookieIntro" />} />
-                    <Route path="/termos" element={<LegalPage titleKey="terms" introKey="termsIntro" />} />
+                    <Route path="/privacidade" element={<LegalPage titleKey="privacyPolicy" page="privacy" />} />
+                    <Route path="/cookies" element={<LegalPage titleKey="cookiePolicy" page="cookies" />} />
+                    <Route path="/termos" element={<LegalPage titleKey="terms" page="terms" />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="*" element={<NotFound />} />
                     </Routes>

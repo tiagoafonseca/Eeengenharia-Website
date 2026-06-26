@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import ContactForm from "../components/sections/ContactForm.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
-import { IoCallOutline, IoMailOutline } from "react-icons/io5";
+import { IoCallOutline, IoMailOutline, IoLocationOutline } from "react-icons/io5";
 
 const Contacts = () => {
     const { t } = useTranslation();
@@ -12,14 +12,20 @@ const Contacts = () => {
                 <Reveal className="text-center mb-12 md:mb-16">
                     <p className="eyebrow mb-6">{t("ebContact")}</p>
                     <h1 className="text-5xl md:text-6xl lg:text-7xl mb-8">{t("contactUs")}</h1>
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-10 text-ink/70 font-light">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 text-ink/70 font-light">
                         <a href="mailto:geral@eeengenharia.pt" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "email" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
                             <IoMailOutline /> geral@eeengenharia.pt
                         </a>
                         <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
                             <IoCallOutline /> +351 913 928 625
                         </a>
+                        <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
+                            <IoCallOutline /> +351 917 982 411
+                        </a>
                     </div>
+                    <p className="inline-flex items-center justify-center gap-2 mt-5 text-ink/70 font-light">
+                        <IoLocationOutline className="shrink-0" /> Rua das Orquídeas, nº 2, Cruz de Pau · 2845-064 Amora
+                    </p>
                 </Reveal>
 
                 <Reveal delay={100}>

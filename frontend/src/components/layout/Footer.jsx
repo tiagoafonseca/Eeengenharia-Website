@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
-import { IoCall, IoMailOutline } from "react-icons/io5";
+import { IoCall, IoMailOutline, IoLocationOutline } from "react-icons/io5";
 
 const linkClass = "text-paper/70 hover:text-paper font-light transition-colors duration-300";
 const colTitle = "uppercase text-xs tracking-[0.2em] text-paper/50 mb-6";
@@ -44,6 +44,12 @@ const Footer = () => {
                             <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="flex items-center gap-3 hover:text-paper transition-colors">
                                 <IoCall className="shrink-0" /> +351 913 928 625
                             </a>
+                            <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="flex items-center gap-3 hover:text-paper transition-colors">
+                                <IoCall className="shrink-0" /> +351 917 982 411
+                            </a>
+                            <p className="flex items-start gap-3">
+                                <IoLocationOutline className="shrink-0 mt-1" /> Rua das Orquídeas, nº 2, Cruz de Pau<br />2845-064 Amora
+                            </p>
                             <div className="flex items-center gap-5 pt-2">
                                 <a href="https://www.instagram.com/eeengenharia_pt/" aria-label="Instagram" className="hover:text-paper transition-colors">
                                     <FaInstagram className="text-xl" />
@@ -58,7 +64,7 @@ const Footer = () => {
 
                 <div className="border-t border-paper/15 mt-14 pt-8 flex flex-col-reverse md:flex-row items-center justify-between gap-6">
                     <p className="text-xs tracking-[0.1em] text-paper/50 text-center md:text-left">
-                        © Eeengenharia 2025 · {t("rightsReserved")} · {t("buildBy")}
+                        © Eeengenharia 2019–{new Date().getFullYear()} · {t("rightsReserved")} · {t("buildBy")}
                     </p>
                     <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                         <Link to="/privacidade" className="text-xs tracking-[0.1em] text-paper/50 hover:text-paper transition-colors">{t("privacyPolicy")}</Link>

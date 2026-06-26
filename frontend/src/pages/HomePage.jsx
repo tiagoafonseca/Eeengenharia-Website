@@ -14,12 +14,11 @@ const HIGHLIGHTS = [
     { num: "03", titleKey: "commitment", descKey: "commitmentDesc" },
 ];
 
-// Placeholder — substituir pelos valores reais da empresa
 const STATS = [
-    { valueKey: "statsYears", value: 5, suffix: "+" },
+    { valueKey: "statsYears", value: 7, suffix: "" },
     { valueKey: "statsProjects", value: 50, suffix: "+" },
-    { valueKey: "statsClients", value: 40, suffix: "+" },
-    { valueKey: "statsTeam", value: 10, suffix: "+" },
+    { valueKey: "statsClients", value: 50, suffix: "+" },
+    { valueKey: "statsTeam", value: 25, suffix: "" },
 ];
 
 // Placeholder — substituir por testemunhos reais
