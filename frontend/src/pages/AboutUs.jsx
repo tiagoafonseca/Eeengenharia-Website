@@ -85,6 +85,31 @@ const AboutUs = () => {
                 </div>
             </section>
 
+            {/* Na Comunicação Social */}
+            <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
+                <Reveal className="text-center mb-16 md:mb-20">
+                    <p className="eyebrow mb-6">{t("ebMedia")}</p>
+                    <h2 className="text-4xl md:text-5xl">{t("mediaRtpTitle")}</h2>
+                    <p className="text-ink/70 font-light mt-5 max-w-2xl mx-auto">{t("mediaRtpDesc")}</p>
+                </Reveal>
+                <Reveal delay={100} className="max-w-4xl mx-auto">
+                    <div className="aspect-[848/400] bg-ink overflow-hidden">
+                        <video
+                            className="w-full h-full object-contain"
+                            controls
+                            preload="none"
+                            playsInline
+                            poster="/video/rtp-poster.webp"
+                            onPlay={() => window.gtag?.("event", "video_play", { event_category: "engagement", event_label: "rtp_interview" })}
+                        >
+                            <source src="/video/rtp.webm" type="video/webm" />
+                            <source src="/video/rtp.mp4" type="video/mp4" />
+                            {t("videoNotSupported")}
+                        </video>
+                    </div>
+                </Reveal>
+            </section>
+
             {/* Contacto */}
             <section className="max-w-5xl mx-auto px-6 md:px-12 py-24 md:py-32">
                 <Reveal className="text-center mb-12 md:mb-16">
