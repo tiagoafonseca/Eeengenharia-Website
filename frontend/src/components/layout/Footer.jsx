@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 lg:gap-12">
                     <div className="col-span-2 lg:col-span-1">
-                        <img src="/logo-footer.webp" alt="Eeengenharia" width="160" height="50" loading="lazy" decoding="async" className="h-10 w-auto" />
+                        <img src="/brand/logo-footer.webp" alt="Eeengenharia" width="160" height="50" loading="lazy" decoding="async" className="h-10 w-auto" />
                     </div>
 
                     <div>

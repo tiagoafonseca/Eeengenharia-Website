@@ -8,6 +8,7 @@ import { PROJECTS, PROJECT_CATEGORIES, CATEGORY_LABELS } from "../data/projects.
 const Portfollium = () => {
     const { t } = useTranslation();
     const [activeCategory, setActiveCategory] = useState("all");
+    const [activeProject, setActiveProject] = useState(null);
     const [lightboxIndex, setLightboxIndex] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
@@ -19,9 +20,28 @@ const Portfollium = () => {
         return list.map((p) => ({ ...p, label: t(CATEGORY_LABELS[p.category]) }));
     }, [activeCategory, t]);
 
+    // Itens da galeria da obra aberta (uma entrada por foto).
+    const lightboxItems = useMemo(() => {
+        if (!activeProject) return [];
+        return activeProject.photos.map((image) => ({
+            image,
+            label: `${activeProject.name} · ${t(CATEGORY_LABELS[activeProject.category])}`,
+        }));
+    }, [activeProject, t]);
+
+    const openProject = (project) => {
+        setActiveProject(project);
+        setLightboxIndex(0);
+    };
+
+    const closeLightbox = () => {
+        setActiveProject(null);
+        setLightboxIndex(null);
+    };
+
     const changeCategory = (id) => {
         setActiveCategory(id);
-        setLightboxIndex(null);
+        closeLightbox();
     };
 
     return (
@@ -59,22 +79,26 @@ const Portfollium = () => {
                             <Reveal key={project.id} delay={(i % 3) * 100}>
                                 <button
                                     type="button"
-                                    onClick={() => setLightboxIndex(i)}
-                                    aria-label={`${project.label} — ${t("portfolio")}`}
+                                    onClick={() => openProject(project)}
+                                    aria-label={`${project.name} — ${project.label} (${project.photos.length} ${t("photos")})`}
                                     className="group relative block w-full overflow-hidden cursor-pointer"
                                 >
                                     <img
-                                        src={project.image}
-                                        alt={project.label}
+                                        src={project.cover}
+                                        alt={`${project.name} — ${project.label}`}
                                         width="400"
                                         height="300"
                                         loading="lazy"
                                         decoding="async"
                                         className="w-full h-72 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
-                                    <span className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors duration-500" />
-                                    <span className="absolute left-5 bottom-5 text-paper text-sm uppercase tracking-[0.18em] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                                        {project.label}
+                                    <span className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/0 to-ink/0 opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <span className="absolute right-4 top-4 text-paper text-xs tracking-[0.12em] bg-ink/40 backdrop-blur-sm px-2.5 py-1 rounded-full">
+                                        {project.photos.length}
+                                    </span>
+                                    <span className="absolute left-5 bottom-5 right-5 flex flex-col items-start gap-1 transition-transform duration-500 group-hover:-translate-y-0.5">
+                                        <span className="text-paper text-lg md:text-xl">{project.name}</span>
+                                        <span className="text-paper/80 text-xs uppercase tracking-[0.18em]">{project.label}</span>
                                     </span>
                                 </button>
                             </Reveal>
@@ -96,11 +120,11 @@ const Portfollium = () => {
                 </div>
             </section>
 
-            {lightboxIndex !== null && (
+            {lightboxIndex !== null && activeProject && (
                 <Lightbox
-                    items={filtered}
+                    items={lightboxItems}
                     index={lightboxIndex}
-                    onClose={() => setLightboxIndex(null)}
+                    onClose={closeLightbox}
                     onNavigate={setLightboxIndex}
                 />
             )}

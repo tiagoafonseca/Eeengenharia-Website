@@ -197,7 +197,7 @@ const HomePage = () => {
                 </Reveal>
                 <Reveal delay={150}>
                     <img
-                        src="/quem-somos.webp"
+                        src="/portfolio/moradias/ramada-1.webp"
                         alt={t("whoWeAre")}
                         width="600"
                         height="450"

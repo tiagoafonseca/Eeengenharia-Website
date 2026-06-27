@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
 const SLIDES = [
-    { url: '/splide-img1.webp', alt: 'Obra Eeengenharia 1' },
-    { url: '/splide-img2.webp', alt: 'Obra Eeengenharia 2' },
-    { url: '/splide-img3.webp', alt: 'Obra Eeengenharia 3' },
+    { url: '/portfolio/moradias/sj-talha-5.webp', alt: 'Moradia com piscina construída pela Eeengenharia ao entardecer' },
+    { url: '/portfolio/moradias/bobadela-1.webp', alt: 'Moradia moderna construída pela Eeengenharia em Bobadela' },
+    { url: '/portfolio/moradias/pinhal-novo-1.webp', alt: 'Interior amplo de moradia construída pela Eeengenharia em Pinhal Novo' },
 ];
 
 const AUTOPLAY_MS = 3000;
@@ -43,8 +43,8 @@ export default function Carousel() {
             {SLIDES.map((slide, i) => (
                 <div
                     key={i}
-                    style={{ backgroundImage: `url(${slide.url})` }}
-                    className={`absolute inset-0 bg-center bg-cover transition-opacity duration-1000 ease-in-out ${
+                    style={{ backgroundImage: `url(${slide.url})`, backgroundPosition: 'center 30%' }}
+                    className={`absolute inset-0 bg-cover transition-opacity duration-1000 ease-in-out ${
                         i === currentIndex ? 'opacity-100' : 'opacity-0'
                     }`}
                     role="img"

@@ -6,7 +6,7 @@ const PUBLIC = "public";
 
 async function generateOgImage() {
     // Logo original (preto sobre branco) assenta num cartão branco arredondado.
-    const logo = await sharp(`${PUBLIC}/logo.png`)
+    const logo = await sharp(`${PUBLIC}/brand/logo.png`)
         .resize({ width: 560 })
         .toBuffer();
 
@@ -22,7 +22,7 @@ async function generateOgImage() {
         </svg>
     `);
 
-    await sharp(`${PUBLIC}/splide-img1.webp`)
+    await sharp(`${PUBLIC}/portfolio/moradias/sj-talha-5.webp`)
         .resize(1200, 630, { fit: "cover", position: "centre" })
         .composite([
             { input: overlay, top: 0, left: 0 },
@@ -37,7 +37,7 @@ async function generateOgImage() {
 async function generateFavicon() {
     // Usa só o monograma "≡≡" da marca (legível em tamanho de separador),
     // a branco sobre fundo preto.
-    const mono = await sharp(`${PUBLIC}/logo.png`)
+    const mono = await sharp(`${PUBLIC}/brand/logo.png`)
         .extract({ left: 2, top: 8, width: 140, height: 74 })
         .trim()
         .negate({ alpha: false })

@@ -49,7 +49,7 @@ const NavBar = () => {
         >
             <div>
                 <NavLink to="/" onClick={handleNavClick}>
-                    <img src="/logo.webp" alt="Eeengenharia" className="h-10 md:h-12 w-auto" width="470" height="193" />
+                    <img src="/brand/logo.webp" alt="Eeengenharia" className="h-10 md:h-12 w-auto" width="470" height="193" />
                 </NavLink>
             </div>
 

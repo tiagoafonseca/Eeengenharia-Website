@@ -44,7 +44,7 @@ const AboutUs = () => {
                     <Reveal delay={150}>
                         <img
                             className="w-full h-auto object-cover lg:sticky lg:top-28"
-                            src="/aboutUs-img1.webp"
+                            src="/portfolio/moradias/pontinha-1.webp"
                             alt={t("ourHistory")}
                             width="1000"
                             height="600"

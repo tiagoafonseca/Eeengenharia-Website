@@ -51,16 +51,32 @@ src/
 └── index.css        Tailwind + tema (inclui dark mode)
 ```
 
+## Assets (`public/`)
+
+```
+public/
+├── brand/        logos (logo + logo-footer, .webp e .png)
+├── team/         fotos da equipa
+├── portfolio/    fotos das obras por categoria (moradias, remodelacoes, projetos)
+├── favicon.png · icon-192.png · icon-512.png · og-image.jpg   (gerados; ver abaixo)
+└── manifest.webmanifest · robots.txt · sitemap.xml            (web/SEO, ficam na raiz)
+```
+
 ## Imagens geradas
 
 Os assets `og-image.jpg`, `favicon.png` e os ícones PWA (`icon-192/512.png`) são gerados a
-partir dos ficheiros em `public/`:
+partir de `public/brand/logo.png` e da foto do hero:
 
 ```bash
 node scripts/generate-images.mjs
 ```
 
-Para converter imagens novas para WebP usa-se também o `sharp` (ver o script como exemplo).
+As fotos das obras são convertidas para WebP e a estrutura `src/data/projects.js` é gerada
+automaticamente (agrupadas por obra) com:
+
+```bash
+node scripts/convert-photos.mjs
+```
 
 ## Notas
 
