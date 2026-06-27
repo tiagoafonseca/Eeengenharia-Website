@@ -69,7 +69,7 @@ const Footer = () => {
 
                 <div className="border-t border-paper/15 mt-14 pt-8 flex flex-col-reverse md:flex-row items-center justify-between gap-6">
                     <p className="text-xs tracking-[0.1em] text-paper/50 text-center md:text-left">
-                        © Eeengenharia 2019–{new Date().getFullYear()} · {t("rightsReserved")} · {t("buildBy")}
+                        © Eeengenharia 2019–{new Date().getFullYear()} · {t("rightsReserved")} · {t("buildByPrefix")}<a href="https://www.linkedin.com/in/tiago-afonseca" target="_blank" rel="noopener noreferrer" className="hover:text-paper transition-colors">Tiago Afonseca</a>
                     </p>
                     <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                         <Link to="/privacidade" className="text-xs tracking-[0.1em] text-paper/50 hover:text-paper transition-colors">{t("privacyPolicy")}</Link>
