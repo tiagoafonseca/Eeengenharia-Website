@@ -6,7 +6,7 @@ const PUBLIC = "public";
 
 async function generateOgImage() {
     // Logo original (preto sobre branco) assenta num cartão branco arredondado.
-    const logo = await sharp(`${PUBLIC}/brand/logo.png`)
+    const logo = await sharp(`${PUBLIC}/brand/logo.webp`)
         .resize({ width: 560 })
         .toBuffer();
 
@@ -29,15 +29,15 @@ async function generateOgImage() {
             { input: logo, top: 195, left: 320 },
         ])
         .jpeg({ quality: 85 })
-        .toFile(`${PUBLIC}/og-image.jpg`);
+        .toFile(`${PUBLIC}/brand/og-image.jpg`);
 
-    console.log("✓ og-image.jpg (1200x630)");
+    console.log("✓ brand/og-image.jpg (1200x630)");
 }
 
 async function generateFavicon() {
     // Usa só o monograma "≡≡" da marca (legível em tamanho de separador),
     // a branco sobre fundo preto.
-    const mono = await sharp(`${PUBLIC}/brand/logo.png`)
+    const mono = await sharp(`${PUBLIC}/brand/logo.webp`)
         .extract({ left: 2, top: 8, width: 140, height: 74 })
         .trim()
         .negate({ alpha: false })
@@ -53,17 +53,17 @@ async function generateFavicon() {
     })
         .composite([{ input: mono, top, left }])
         .png()
-        .toFile(`${PUBLIC}/favicon.png`);
+        .toFile(`${PUBLIC}/brand/favicon.png`);
 
-    console.log("✓ favicon.png (512x512, monograma)");
+    console.log("✓ brand/favicon.png (512x512, monograma)");
 }
 
 // Ícones PWA (manifest) — derivados do favicon (monograma sobre fundo preto).
 // O fundo preenche todo o quadrado, por isso servem também como "maskable".
 async function generatePwaIcons() {
-    await sharp(`${PUBLIC}/favicon.png`).resize(192, 192).png().toFile(`${PUBLIC}/icon-192.png`);
-    await sharp(`${PUBLIC}/favicon.png`).resize(512, 512).png().toFile(`${PUBLIC}/icon-512.png`);
-    console.log("✓ icon-192.png, icon-512.png");
+    await sharp(`${PUBLIC}/brand/favicon.png`).resize(192, 192).png().toFile(`${PUBLIC}/brand/icon-192.png`);
+    await sharp(`${PUBLIC}/brand/favicon.png`).resize(512, 512).png().toFile(`${PUBLIC}/brand/icon-512.png`);
+    console.log("✓ brand/icon-192.png, brand/icon-512.png");
 }
 
 await generateOgImage();

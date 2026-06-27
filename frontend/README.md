@@ -55,17 +55,16 @@ src/
 
 ```
 public/
-├── brand/        logos (logo + logo-footer, .webp e .png)
+├── brand/        logos, favicon, ícones PWA e og-image
 ├── team/         fotos da equipa
 ├── portfolio/    fotos das obras por categoria (moradias, remodelacoes, projetos)
-├── favicon.png · icon-192.png · icon-512.png · og-image.jpg   (gerados; ver abaixo)
-└── manifest.webmanifest · robots.txt · sitemap.xml            (web/SEO, ficam na raiz)
+└── manifest.webmanifest · robots.txt · sitemap.xml   (web/SEO, ficam na raiz)
 ```
 
 ## Imagens geradas
 
-Os assets `og-image.jpg`, `favicon.png` e os ícones PWA (`icon-192/512.png`) são gerados a
-partir de `public/brand/logo.png` e da foto do hero:
+Os assets `brand/og-image.jpg`, `brand/favicon.png` e os ícones PWA (`brand/icon-192/512.png`)
+são gerados a partir de `public/brand/logo.webp` e da foto do hero:
 
 ```bash
 node scripts/generate-images.mjs
