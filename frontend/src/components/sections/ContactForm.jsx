@@ -211,9 +211,16 @@ const ContactForm = ({ onSuccess }) => {
         { value: "projetos",     labelKey: "formProjects" },
     ];
 
+    const phoneErrorMsg = () => {
+        const rule = PHONE_RULES[countryCode] ?? { min: 6, max: 15 };
+        return rule.min === rule.max
+            ? t("formErrorPhoneExact", { count: rule.min })
+            : t("formErrorPhoneRange", { min: rule.min, max: rule.max });
+    };
+
     const validate = (name, value) => {
         if (name === "email"     && value) return validateEmail(value) ? "" : t("formErrorEmail");
-        if (name === "telemovel" && value) return validatePhone(value, countryCode) ? "" : t("formErrorPhone");
+        if (name === "telemovel" && value) return validatePhone(value, countryCode) ? "" : phoneErrorMsg();
         if (name === "descricao" && value) return validateDesc(value)  ? "" : t("formErrorDesc");
         return "";
     };
