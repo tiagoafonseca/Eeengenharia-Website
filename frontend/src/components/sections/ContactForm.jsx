@@ -357,7 +357,7 @@ const ContactForm = ({ onSuccess }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             className="flex-1 bg-transparent text-ink placeholder-muted focus:outline-none disabled:opacity-50"
-                            placeholder={PHONE_RULES[countryCode]?.placeholder ?? t("formPhone")}
+                            placeholder={t("formPhone")}
                             autoComplete="tel-national"
                             disabled={sending}
                         />

@@ -1,20 +1,36 @@
-import { useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { IoClose } from "react-icons/io5";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
-/**
- * Lightbox acessível para galerias de imagens.
- *
- * @param {Array<{image: string, label?: string}>} items
- * @param {number}   index    - índice atual em `items`
- * @param {Function} onClose
- * @param {Function} onNavigate - recebe o novo índice
- */
+const FADE_MS = 200;
+
 const Lightbox = ({ items, index, onClose, onNavigate }) => {
     const { t } = useTranslation();
     const total = items.length;
+
+    const [displayIndex, setDisplayIndex] = useState(index);
+    const [visible, setVisible] = useState(false);
+    const lastIndexRef = useRef(index);
+
+    // Fade-in na abertura
+    useEffect(() => {
+        const raf = requestAnimationFrame(() => setVisible(true));
+        return () => cancelAnimationFrame(raf);
+    }, []);
+
+    // Fade-out → troca de foto → fade-in na navegação
+    useEffect(() => {
+        if (index === lastIndexRef.current) return;
+        lastIndexRef.current = index;
+        setVisible(false);
+        const id = setTimeout(() => {
+            setDisplayIndex(index);
+            setVisible(true);
+        }, FADE_MS);
+        return () => clearTimeout(id);
+    }, [index]);
 
     const goPrev = useCallback(
         () => onNavigate((index - 1 + total) % total),
@@ -39,7 +55,7 @@ const Lightbox = ({ items, index, onClose, onNavigate }) => {
         };
     }, [onClose, goPrev, goNext]);
 
-    const item = items[index];
+    const item = items[displayIndex];
     if (!item) return null;
 
     return createPortal(
@@ -69,7 +85,8 @@ const Lightbox = ({ items, index, onClose, onNavigate }) => {
             )}
 
             <figure
-                className="flex flex-col items-center max-w-5xl max-h-[90vh]"
+                style={{ transitionDuration: `${FADE_MS}ms` }}
+                className={`flex flex-col items-center max-w-5xl max-h-[90vh] transition-opacity ease-in-out ${visible ? "opacity-100" : "opacity-0"}`}
                 onClick={(e) => e.stopPropagation()}
             >
                 <img
@@ -82,7 +99,7 @@ const Lightbox = ({ items, index, onClose, onNavigate }) => {
                         {item.label}
                         {total > 1 && (
                             <span className="text-gray-400 text-base ml-3">
-                                {index + 1} / {total}
+                                {displayIndex + 1} / {total}
                             </span>
                         )}
                     </figcaption>
