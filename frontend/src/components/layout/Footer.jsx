@@ -41,15 +41,20 @@ const Footer = () => {
                             <a href="mailto:geral@eeengenharia.pt" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "email" })} className="flex items-center gap-3 hover:text-paper transition-colors">
                                 <IoMailOutline className="shrink-0" /> geral@eeengenharia.pt
                             </a>
-                            <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="flex items-center gap-3 hover:text-paper transition-colors">
-                                <IoCall className="shrink-0" /> +351 913 928 625
+                            <span className="flex items-center gap-2 text-sm">
+                                <IoCall className="shrink-0" />
+                                <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="whitespace-nowrap hover:text-paper transition-colors">+351 913 928 625</a>
+                                <span className="text-paper/30 select-none">|</span>
+                                <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="whitespace-nowrap hover:text-paper transition-colors">+351 917 982 411</a>
+                            </span>
+                            <a
+                                href="https://maps.google.com/?q=Rua+das+Orquídeas,+nº+2,+Amora,+Portugal"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-start gap-3 hover:text-paper transition-colors"
+                            >
+                                <IoLocationOutline className="shrink-0 mt-1" /> Rua das Orquídeas, nº 2, Cruz de Pau, Amora
                             </a>
-                            <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="flex items-center gap-3 hover:text-paper transition-colors">
-                                <IoCall className="shrink-0" /> +351 917 982 411
-                            </a>
-                            <p className="flex items-start gap-3">
-                                <IoLocationOutline className="shrink-0 mt-1" /> Rua das Orquídeas, nº 2, Cruz de Pau<br />2845-064 Amora
-                            </p>
                             <div className="flex items-center gap-5 pt-2">
                                 <a href="https://www.instagram.com/eeengenharia_pt/" aria-label="Instagram" className="hover:text-paper transition-colors">
                                     <FaInstagram className="text-xl" />

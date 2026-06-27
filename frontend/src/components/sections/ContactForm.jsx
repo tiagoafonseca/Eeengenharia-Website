@@ -18,8 +18,26 @@ const COUNTRY_CODES = [
     { code: "other", flag: null, name: "Outro" },
 ];
 
+const PHONE_RULES = {
+    "+351": { min: 9,  max: 9,  placeholder: "912 345 678" },
+    "+55":  { min: 10, max: 11, placeholder: "11 91234-5678" },
+    "+34":  { min: 9,  max: 9,  placeholder: "612 345 678" },
+    "+33":  { min: 9,  max: 9,  placeholder: "06 12 34 56 78" },
+    "+44":  { min: 10, max: 10, placeholder: "07911 123456" },
+    "+49":  { min: 10, max: 11, placeholder: "0151 23456789" },
+    "+41":  { min: 9,  max: 9,  placeholder: "079 123 45 67" },
+    "+352": { min: 9,  max: 9,  placeholder: "621 123 456" },
+    "+244": { min: 9,  max: 9,  placeholder: "923 123 456" },
+    "+258": { min: 9,  max: 9,  placeholder: "84 123 4567" },
+    "other": { min: 6, max: 15, placeholder: "Número de telemóvel" },
+};
+
 const validateEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
-const validatePhone = (v) => v.replace(/\D/g, "").length >= 8;
+const validatePhone = (v, cc) => {
+    const digits = v.replace(/\D/g, "").length;
+    const rule = PHONE_RULES[cc] ?? { min: 6, max: 15 };
+    return digits >= rule.min && digits <= rule.max;
+};
 const validateDesc  = (v) => v.trim().split(/\s+/).filter(Boolean).length >= 3;
 
 const GlobeIcon = ({ className = "h-4 w-4" }) => (
@@ -195,10 +213,16 @@ const ContactForm = ({ onSuccess }) => {
 
     const validate = (name, value) => {
         if (name === "email"     && value) return validateEmail(value) ? "" : t("formErrorEmail");
-        if (name === "telemovel" && value && countryCode !== "other") return validatePhone(value) ? "" : t("formErrorPhone");
+        if (name === "telemovel" && value) return validatePhone(value, countryCode) ? "" : t("formErrorPhone");
         if (name === "descricao" && value) return validateDesc(value)  ? "" : t("formErrorDesc");
         return "";
     };
+
+    useEffect(() => {
+        if (touched.telemovel) {
+            setErrors((prev) => ({ ...prev, telemovel: validate("telemovel", form.telemovel) }));
+        }
+    }, [countryCode]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -326,7 +350,7 @@ const ContactForm = ({ onSuccess }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             className="flex-1 bg-transparent text-ink placeholder-muted focus:outline-none disabled:opacity-50"
-                            placeholder={t("formPhone")}
+                            placeholder={PHONE_RULES[countryCode]?.placeholder ?? t("formPhone")}
                             autoComplete="tel-national"
                             disabled={sending}
                         />

@@ -16,16 +16,21 @@ const Contacts = () => {
                         <a href="mailto:geral@eeengenharia.pt" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "email" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
                             <IoMailOutline /> geral@eeengenharia.pt
                         </a>
-                        <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
-                            <IoCallOutline /> +351 913 928 625
-                        </a>
-                        <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="inline-flex items-center gap-2 hover:text-ink transition-colors">
-                            <IoCallOutline /> +351 917 982 411
-                        </a>
+                        <span className="inline-flex items-center gap-2">
+                            <IoCallOutline className="shrink-0" />
+                            <a href="tel:+351913928625" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="hover:text-ink transition-colors">+351 913 928 625</a>
+                            <span className="text-line select-none">|</span>
+                            <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="hover:text-ink transition-colors">+351 917 982 411</a>
+                        </span>
                     </div>
-                    <p className="inline-flex items-center justify-center gap-2 mt-5 text-ink/70 font-light">
-                        <IoLocationOutline className="shrink-0" /> Rua das Orquídeas, nº 2, Cruz de Pau · 2845-064 Amora
-                    </p>
+                    <a
+                        href="https://maps.google.com/?q=Rua+das+Orquídeas,+nº+2,+Amora,+Portugal"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 mt-5 text-ink/70 font-light hover:text-ink transition-colors"
+                    >
+                        <IoLocationOutline className="shrink-0" /> Rua das Orquídeas, nº 2, Cruz de Pau, Amora
+                    </a>
                 </Reveal>
 
                 <Reveal delay={100}>
