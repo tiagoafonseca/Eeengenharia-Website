@@ -56,8 +56,8 @@ src/
 ```
 public/
 ├── brand/        logos, favicon, ícones PWA e og-image
-├── team/         fotos da equipa
 ├── portfolio/    fotos das obras por categoria (moradias, remodelacoes, projetos)
+├── video/        vídeo de apresentação da equipa (mp4 + webm) e poster
 └── manifest.webmanifest · robots.txt · sitemap.xml   (web/SEO, ficam na raiz)
 ```
 

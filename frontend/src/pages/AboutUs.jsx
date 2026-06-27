@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import ContactForm from "../components/sections/ContactForm.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
-import { TEAM } from "../data/team.js";
 
 const VALUE_KEYS = [
     { key: "valueExclusivity",  descKey: "valueExclusivityDesc" },
@@ -62,25 +61,22 @@ const AboutUs = () => {
                         <h2 className="text-4xl md:text-5xl">{t("ourTeam")}</h2>
                     </Reveal>
 
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-                        {TEAM.map((member, i) => (
-                            <Reveal key={i} delay={i * 100} className="text-center">
-                                <div className="overflow-hidden mb-5">
-                                    <img
-                                        className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                                        src={member.image}
-                                        alt={member.name}
-                                        width="300"
-                                        height="300"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </div>
-                                <h3 className="font-serif text-2xl">{member.name}</h3>
-                                <p className="text-sm uppercase tracking-[0.15em] text-muted mt-1">{member.role}</p>
-                            </Reveal>
-                        ))}
-                    </div>
+                    <Reveal delay={100} className="max-w-4xl mx-auto">
+                        <div className="aspect-[2048/1080] bg-ink overflow-hidden">
+                            <video
+                                className="w-full h-full object-cover"
+                                controls
+                                preload="none"
+                                playsInline
+                                poster="/video/equipa-poster.webp"
+                                onPlay={() => window.gtag?.("event", "video_play", { event_category: "engagement", event_label: "team_presentation" })}
+                            >
+                                <source src="/video/equipa.webm" type="video/webm" />
+                                <source src="/video/equipa.mp4" type="video/mp4" />
+                                {t("videoNotSupported")}
+                            </video>
+                        </div>
+                    </Reveal>
 
                     <Reveal className="max-w-3xl mx-auto text-center mt-16 md:mt-20 space-y-4 text-lg text-ink/70 font-light">
                         <p>{t("teamP1")}</p>
