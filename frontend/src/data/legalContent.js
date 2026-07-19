@@ -9,7 +9,6 @@
  */
 
 const COMPANY = "Escala Eximia Engenharia, Lda.";
-const ADDRESS = "Rua das Orquídeas, nº 2, 2845-064 Amora";
 const NIPC = "516 114 727";
 const EMAIL = "geral@eeengenharia.pt";
 
@@ -20,7 +19,7 @@ const pt = {
                 title: "Responsável pelo tratamento",
                 body: [
                     "A presente Política de Privacidade aplica-se ao website eeengenharia.com e descreve como são tratados os dados pessoais dos seus utilizadores.",
-                    `O responsável pelo tratamento é a ${COMPANY}, com sede na ${ADDRESS}, titular do NIPC ${NIPC} (doravante "Eeengenharia").`,
+                    `O responsável pelo tratamento é a ${COMPANY}, titular do NIPC ${NIPC} (doravante "EE Engenharia").`,
                     `Para qualquer questão relativa a dados pessoais, pode contactar-nos através do email ${EMAIL}.`,
                 ],
             },
@@ -102,7 +101,7 @@ const pt = {
             {
                 title: "Identificação",
                 body: [
-                    `O presente website é propriedade da ${COMPANY}, com sede na ${ADDRESS}, NIPC ${NIPC}.`,
+                    `O presente website é propriedade da ${COMPANY}, NIPC ${NIPC}.`,
                 ],
             },
             {
@@ -146,7 +145,7 @@ const en = {
                 title: "Data Controller",
                 body: [
                     "This Privacy Policy applies to the eeengenharia.com website and describes how the personal data of its users is processed.",
-                    `The data controller is ${COMPANY}, headquartered at ${ADDRESS}, registered under NIPC ${NIPC} (hereinafter "Eeengenharia").`,
+                    `The data controller is ${COMPANY}, registered under NIPC ${NIPC} (hereinafter "EE Engenharia").`,
                     `For any questions regarding personal data, you may contact us at ${EMAIL}.`,
                 ],
             },
@@ -228,7 +227,7 @@ const en = {
             {
                 title: "Identification",
                 body: [
-                    `This website is owned by ${COMPANY}, headquartered at ${ADDRESS}, NIPC ${NIPC}.`,
+                    `This website is owned by ${COMPANY}, NIPC ${NIPC}.`,
                 ],
             },
             {
@@ -272,7 +271,7 @@ const es = {
                 title: "Responsable del tratamiento",
                 body: [
                     "La presente Política de Privacidad se aplica al sitio web eeengenharia.com y describe cómo se tratan los datos personales de sus usuarios.",
-                    `El responsable del tratamiento es ${COMPANY}, con domicilio social en ${ADDRESS}, titular del NIPC ${NIPC} (en adelante «Eeengenharia»).`,
+                    `El responsable del tratamiento es ${COMPANY}, titular del NIPC ${NIPC} (en adelante «EE Engenharia»).`,
                     `Para cualquier consulta relativa a datos personales, puede contactarnos en ${EMAIL}.`,
                 ],
             },
@@ -354,7 +353,7 @@ const es = {
             {
                 title: "Identificación",
                 body: [
-                    `El presente sitio web es propiedad de ${COMPANY}, con domicilio social en ${ADDRESS}, NIPC ${NIPC}.`,
+                    `El presente sitio web es propiedad de ${COMPANY}, NIPC ${NIPC}.`,
                 ],
             },
             {
@@ -398,7 +397,7 @@ const fr = {
                 title: "Responsable du traitement",
                 body: [
                     "La présente Politique de confidentialité s'applique au site web eeengenharia.com et décrit comment les données personnelles de ses utilisateurs sont traitées.",
-                    `Le responsable du traitement est ${COMPANY}, dont le siège social est situé au ${ADDRESS}, immatriculée sous le numéro NIPC ${NIPC} (ci-après « Eeengenharia »).`,
+                    `Le responsable du traitement est ${COMPANY}, immatriculée sous le numéro NIPC ${NIPC} (ci-après « EE Engenharia »).`,
                     `Pour toute question relative aux données personnelles, vous pouvez nous contacter à l'adresse ${EMAIL}.`,
                 ],
             },
@@ -480,7 +479,7 @@ const fr = {
             {
                 title: "Identification",
                 body: [
-                    `Le présent site web est la propriété de ${COMPANY}, dont le siège social est situé au ${ADDRESS}, NIPC ${NIPC}.`,
+                    `Le présent site web est la propriété de ${COMPANY}, NIPC ${NIPC}.`,
                 ],
             },
             {

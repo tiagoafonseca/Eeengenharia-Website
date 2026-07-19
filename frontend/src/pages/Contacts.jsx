@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import ContactForm from "../components/sections/ContactForm.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
-import { IoCallOutline, IoMailOutline, IoLocationOutline } from "react-icons/io5";
+import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 
 const Contacts = () => {
     const { t } = useTranslation();
@@ -23,14 +23,6 @@ const Contacts = () => {
                             <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="hover:text-ink transition-colors">+351 917 982 411</a>
                         </span>
                     </div>
-                    <a
-                        href="https://maps.google.com/?q=Rua+das+Orquídeas,+nº+2,+Amora,+Portugal"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 mt-5 text-ink/70 font-light hover:text-ink transition-colors"
-                    >
-                        <IoLocationOutline className="shrink-0" /> Rua das Orquídeas, nº 2, Cruz de Pau, Amora
-                    </a>
                 </Reveal>
 
                 <Reveal delay={100}>
