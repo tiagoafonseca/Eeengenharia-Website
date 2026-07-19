@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
-import { IoCall, IoMailOutline, IoLocationOutline } from "react-icons/io5";
+import { IoCall, IoMailOutline } from "react-icons/io5";
 
 const linkClass = "text-paper/70 hover:text-paper font-light transition-colors duration-300";
 const colTitle = "uppercase text-xs tracking-[0.2em] text-paper/50 mb-6";
@@ -47,14 +47,6 @@ const Footer = () => {
                                 <span className="text-paper/30 select-none">|</span>
                                 <a href="tel:+351917982411" onClick={() => window.gtag?.("event", "contact_click", { event_category: "contact", event_label: "phone" })} className="whitespace-nowrap hover:text-paper transition-colors">+351 917 982 411</a>
                             </span>
-                            <a
-                                href="https://maps.google.com/?q=Rua+das+Orquídeas,+nº+2,+Amora,+Portugal"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-start gap-3 hover:text-paper transition-colors"
-                            >
-                                <IoLocationOutline className="shrink-0 mt-1" /> Rua das Orquídeas, nº 2, Cruz de Pau, Amora
-                            </a>
                             <div className="flex items-center gap-5 pt-2">
                                 <a href="https://www.instagram.com/eeengenharia_pt/" aria-label="Instagram" className="hover:text-paper transition-colors">
                                     <FaInstagram className="text-xl" />
